@@ -7,5 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="botoes">#19BACE</color>
+    <color name="primary_button">#63A5EF</color>
+    <color name="pressed_button">#3F8DDC</color>
+    <color name="secundary_button">#A1D9D1</color>
+    <color name="secundary_button_text">#003B46</color>
+    <color name="pressed_secundary_button_text">#72C1B8</color>
+    <color name="backgroud_app">#F7FAFC</color>
 </resources>
