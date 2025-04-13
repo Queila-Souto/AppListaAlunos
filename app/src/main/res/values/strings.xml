@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Lista de Alunos</string>
+    <string name="txt_titulo">Lista Vip</string>
+    <string name="txt_hint_nome">Primeiro Nome</string>
+    <string name="txt_hint_sobrenome">Sobrenome</string>
+    <string name="txt_hint_curso">Curso Desejado</string>
+    <string name="txt_hint_tel">Telefone</string>
+    <string name="button_limpar">Limpar</string>
+    <string name="button_salvar">Salvar</string>
+    <string name="button_finalizar">Finalizar</string>
 </resources>
