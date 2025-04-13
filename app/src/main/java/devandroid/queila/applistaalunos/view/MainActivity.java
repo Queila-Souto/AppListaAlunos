@@ -15,5 +15,9 @@ Pessoa pessoa;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         pessoa=new Pessoa();
+        pessoa.setPrimeiroNome("Queila");
+        pessoa.setSobrenome("Souto");
+        pessoa.setCurso("Informática");
+        pessoa.setTelefone("(12)996744079");
     }
 }
