@@ -1,8 +1,10 @@
-package devandroid.queila.applistaalunos;
+package devandroid.queila.applistaalunos.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import devandroid.queila.applistaalunos.R;
 
 public class MainActivity extends AppCompatActivity {
 
