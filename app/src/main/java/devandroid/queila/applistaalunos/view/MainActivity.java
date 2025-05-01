@@ -22,7 +22,6 @@ Button btnlimpar;
 Button btnsalvar;
 Button btnfinalizar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +31,6 @@ Button btnfinalizar;
         pessoa.setSobrenome("Souto");
         pessoa.setCurso("Informática");
         pessoa.setTelefone("(12)996744079");
-
         edittxtnome = findViewById(R.id.editTextText2);
         edittxtsobrenome = findViewById(R.id.editTextText3);
         edittxtcurso = findViewById(R.id.editTextText4);
@@ -40,7 +38,6 @@ Button btnfinalizar;
         btnlimpar = findViewById(R.id.buttonLimpar);
         btnsalvar = findViewById(R.id.buttonSalvar);
         btnfinalizar = findViewById(R.id.buttonFinalizar);
-
         edittxtnome.setText(pessoa.getPrimeiroNome());
         edittxtsobrenome.setText(pessoa.getSobrenome());
         edittxtcurso.setText(pessoa.getCurso());
@@ -68,14 +65,8 @@ Button btnfinalizar;
                 pessoa.setSobrenome(edittxtsobrenome.getText().toString());
                 pessoa.setTelefone(edittxttelefone.getText().toString());
                 pessoa.setCurso(edittxtcurso.getText().toString());
-
                 Toast.makeText(MainActivity.this, "Salvo"+pessoa.toString(),Toast.LENGTH_LONG).show();
-
             }
         });
-
-
-
-
     }
 }
