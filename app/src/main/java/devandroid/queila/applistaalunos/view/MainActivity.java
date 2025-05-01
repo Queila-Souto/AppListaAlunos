@@ -2,6 +2,7 @@ package devandroid.queila.applistaalunos.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,11 +22,15 @@ EditText edittxttelefone;
 Button btnlimpar;
 Button btnsalvar;
 Button btnfinalizar;
+SharedPreferences sharedPreferences;
+public static final String NOME_PREFERENCES="pref_listaVip";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferences= getSharedPreferences(NOME_PREFERENCES,0);
+        SharedPreferences.Editor listaVip = sharedPreferences.edit();
         pessoa=new Pessoa();
         pessoa.setPrimeiroNome("Queila");
         pessoa.setSobrenome("Souto");
@@ -66,6 +71,11 @@ Button btnfinalizar;
                 pessoa.setTelefone(edittxttelefone.getText().toString());
                 pessoa.setCurso(edittxtcurso.getText().toString());
                 Toast.makeText(MainActivity.this, "Salvo"+pessoa.toString(),Toast.LENGTH_LONG).show();
+                listaVip.putString("Primeiro Nome", pessoa.getPrimeiroNome());
+                listaVip.putString("Sobrenome", pessoa.getSobrenome());
+                listaVip.putString("Curso", pessoa.getCurso());
+                listaVip.putString("Telefone", pessoa.getTelefone());
+                listaVip.apply();
             }
         });
     }
