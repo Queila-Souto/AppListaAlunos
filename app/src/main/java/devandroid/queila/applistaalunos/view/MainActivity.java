@@ -13,6 +13,7 @@ import android.widget.Toast;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaApi;
 import devandroid.queila.applistaalunos.api.RetrofitClient;
+import devandroid.queila.applistaalunos.controller.PessoaController;
 import devandroid.queila.applistaalunos.model.Pessoa;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,9 +37,8 @@ public static final String NOME_PREFERENCES="pref_listaVip";
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         pessoa = new Pessoa();
-        sharedPreferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor listaVip = sharedPreferences.edit();
-        edittxtnome = findViewById(R.id.editTextText2);
+        PessoaController controller = new PessoaController(MainActivity.this);
+       edittxtnome = findViewById(R.id.editTextText2);
         edittxtsobrenome = findViewById(R.id.editTextText3);
         edittxtcurso = findViewById(R.id.editTextText4);
         edittxttelefone = findViewById(R.id.editTextText5);
@@ -74,12 +74,7 @@ public static final String NOME_PREFERENCES="pref_listaVip";
                 pessoa.setCurso(edittxtcurso.getText().toString());
                 Toast.makeText(MainActivity.this, "Salvo" + pessoa.toString(), Toast.LENGTH_LONG).show();
 
-                //salvando localmente
-                listaVip.putString("Primeiro Nome", pessoa.getPrimeiroNome());
-                listaVip.putString("Sobrenome", pessoa.getSobrenome());
-                listaVip.putString("Curso", pessoa.getCurso());
-                listaVip.putString("Telefone", pessoa.getTelefone());
-                listaVip.apply();
+                controller.salvarLocalmente(pessoa);
 
                 //salvando no banco
                 PessoaApi pessoaApi = RetrofitClient.getRetrofitInstance().create(PessoaApi.class);
