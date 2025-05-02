@@ -27,8 +27,13 @@ public class PessoaController {
         listaVip.apply();
     };
     public Pessoa buscarLocalmente(){
-        Pessoa pessoa = null;
-        return pessoa;}
+        Pessoa pessoa = new Pessoa();
+        pessoa.setPrimeiroNome(sharedPreferences.getString("Primeiro Nome","-"));
+        pessoa.setSobrenome(sharedPreferences.getString("Sobrenome","-"));
+        pessoa.setCurso(sharedPreferences.getString("Curso","-"));
+        pessoa.setTelefone(sharedPreferences.getString("Telefone","-"));
+
+    return pessoa;}
     public void finalizar(){};
 
 }

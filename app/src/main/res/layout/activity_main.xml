@@ -88,6 +88,20 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
 
     <Button
+        android:id="@+id/buttonRecuperar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/primary_button"
+        android:text="@string/button_recuperar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonFinalizar"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSalvar"
+        app:layout_constraintStart_toEndOf="@id/buttonLimpar"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
+
+    <Button
         android:id="@+id/buttonSalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

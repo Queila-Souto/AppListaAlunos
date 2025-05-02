@@ -27,6 +27,7 @@ EditText edittxtsobrenome;
 EditText edittxtcurso;
 EditText edittxttelefone;
 Button btnlimpar;
+Button btnRecuperar;
 Button btnsalvar;
 Button btnfinalizar;
 SharedPreferences sharedPreferences;
@@ -38,17 +39,21 @@ public static final String NOME_PREFERENCES="pref_listaVip";
         setContentView(R.layout.activity_main);
         pessoa = new Pessoa();
         PessoaController controller = new PessoaController(MainActivity.this);
-       edittxtnome = findViewById(R.id.editTextText2);
+
+        edittxtnome = findViewById(R.id.editTextText2);
         edittxtsobrenome = findViewById(R.id.editTextText3);
         edittxtcurso = findViewById(R.id.editTextText4);
         edittxttelefone = findViewById(R.id.editTextText5);
         btnlimpar = findViewById(R.id.buttonLimpar);
+        btnRecuperar = findViewById(R.id.buttonRecuperar);
         btnsalvar = findViewById(R.id.buttonSalvar);
         btnfinalizar = findViewById(R.id.buttonFinalizar);
+
         edittxtnome.setText(pessoa.getPrimeiroNome());
         edittxtsobrenome.setText(pessoa.getSobrenome());
         edittxtcurso.setText(pessoa.getCurso());
         edittxttelefone.setText(pessoa.getTelefone());
+
         btnlimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +62,17 @@ public static final String NOME_PREFERENCES="pref_listaVip";
                 edittxtcurso.setText("");
                 edittxttelefone.setText("");
                 controller.limpar();
+            }
+        });
+        btnRecuperar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pessoa = controller.buscarLocalmente();
+                edittxtnome.setText(pessoa.getPrimeiroNome());
+                edittxtsobrenome.setText(pessoa.getSobrenome());
+                edittxtcurso.setText(pessoa.getCurso());
+                edittxttelefone.setText(pessoa.getTelefone());
+                Toast.makeText(MainActivity.this, "Dados recuperados",Toast.LENGTH_LONG).show();
             }
         });
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
