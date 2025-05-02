@@ -56,6 +56,7 @@ public static final String NOME_PREFERENCES="pref_listaVip";
                 edittxtsobrenome.setText("");
                 edittxtcurso.setText("");
                 edittxttelefone.setText("");
+                controller.limpar();
             }
         });
         btnfinalizar.setOnClickListener(new View.OnClickListener() {

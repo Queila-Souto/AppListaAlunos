@@ -22,8 +22,11 @@ public class PessoaController {
         listaVip.putString("Telefone", pessoa.getTelefone());
         listaVip.apply();
     };
-    public void limpar(){};
-    public Pessoa buscar(){
+    public void limpar(){
+        listaVip.clear();
+        listaVip.apply();
+    };
+    public Pessoa buscarLocalmente(){
         Pessoa pessoa = null;
         return pessoa;}
     public void finalizar(){};
