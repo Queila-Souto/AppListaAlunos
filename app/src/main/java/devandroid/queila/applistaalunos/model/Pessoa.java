@@ -5,7 +5,15 @@ public class Pessoa {
     private String sobrenome;
     private String curso;
     private String telefone;
-    public Pessoa (){}
+
+    public Pessoa (String primeiroNome, String sobrenome, String telefone, String curso){
+        this.primeiroNome = primeiroNome;
+        this.sobrenome = sobrenome;
+        this.telefone = telefone;
+        this.curso = curso;}
+
+    public Pessoa () {};
+
     public String getSobrenome() {
         return sobrenome;
     }
