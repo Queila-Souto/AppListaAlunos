@@ -1,9 +1,17 @@
 package devandroid.queila.applistaalunos.controller;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
+import android.widget.Toast;
 
+import devandroid.queila.applistaalunos.api.PessoaApi;
+import devandroid.queila.applistaalunos.api.RetrofitClient;
 import devandroid.queila.applistaalunos.model.Pessoa;
 import devandroid.queila.applistaalunos.view.MainActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PessoaController {
     SharedPreferences sharedPreferences;
@@ -36,4 +44,24 @@ public class PessoaController {
     return pessoa;}
     public void finalizar(){};
 
+    public void salvarBD(Pessoa pessoa, Context context) {
+        PessoaApi pessoaApi = RetrofitClient.getRetrofitInstance().create(PessoaApi.class);
+        Call<Pessoa> call = pessoaApi.cadastrar(pessoa);
+        call.enqueue(new Callback<Pessoa>() {
+            @Override
+            public void onResponse(Call<Pessoa> call, Response<Pessoa> response) {
+                if (response.isSuccessful()) {
+                    String resposta = "Salvo através da API com sucesso!";
+                    Log.e("conexão","salvo"+pessoa);
+                } else {
+                    Log.e("conexão","Não foi possível conectar na api"+pessoa);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Pessoa> call, Throwable t) {
+                Log.e("conexão","Não foi possível conectar na api"+pessoa);
+            }
+        });
+    }
 }

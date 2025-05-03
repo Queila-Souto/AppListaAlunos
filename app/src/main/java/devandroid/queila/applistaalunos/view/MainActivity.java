@@ -89,30 +89,10 @@ public static final String NOME_PREFERENCES="pref_listaVip";
                 pessoa.setSobrenome(edittxtsobrenome.getText().toString());
                 pessoa.setTelefone(edittxttelefone.getText().toString());
                 pessoa.setCurso(edittxtcurso.getText().toString());
-                Toast.makeText(MainActivity.this, "Salvo" + pessoa.toString(), Toast.LENGTH_LONG).show();
 
                 controller.salvarLocalmente(pessoa);
+                controller.salvarBD(pessoa,getApplicationContext());
 
-                //salvando no banco
-                PessoaApi pessoaApi = RetrofitClient.getRetrofitInstance().create(PessoaApi.class);
-                Call<Pessoa> call = pessoaApi.cadastrar(pessoa);
-
-                call.enqueue(new Callback<Pessoa>() {
-                    @Override
-                    public void onResponse(Call<Pessoa> call, Response<Pessoa> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(MainActivity.this, "Salvo na API com sucesso!", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(MainActivity.this, "Erro ao salvar na API: " + response.code(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Pessoa> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, "Falha na chamada: " + t.getMessage(), Toast.LENGTH_LONG).show();
-                        Log.e("conexão","Não foi possível conectar na api"+pessoa);
-                    }
-                });
             }
         });
     }}
