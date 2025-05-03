@@ -1,23 +1,14 @@
 package devandroid.queila.applistaalunos.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import devandroid.queila.applistaalunos.R;
-import devandroid.queila.applistaalunos.api.PessoaApi;
-import devandroid.queila.applistaalunos.api.RetrofitClient;
 import devandroid.queila.applistaalunos.controller.PessoaController;
 import devandroid.queila.applistaalunos.model.Pessoa;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 Pessoa pessoa;
@@ -30,8 +21,6 @@ Button btnlimpar;
 Button btnRecuperar;
 Button btnsalvar;
 Button btnfinalizar;
-SharedPreferences sharedPreferences;
-public static final String NOME_PREFERENCES="pref_listaVip";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +80,7 @@ public static final String NOME_PREFERENCES="pref_listaVip";
                 pessoa.setCurso(edittxtcurso.getText().toString());
 
                 controller.salvarLocalmente(pessoa);
-                controller.salvarBD(pessoa,getApplicationContext());
+                controller.salvarBD(pessoa);
 
             }
         });

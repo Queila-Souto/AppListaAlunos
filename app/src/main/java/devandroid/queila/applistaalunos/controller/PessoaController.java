@@ -1,10 +1,7 @@
 package devandroid.queila.applistaalunos.controller;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Toast;
-
 import devandroid.queila.applistaalunos.api.PessoaApi;
 import devandroid.queila.applistaalunos.api.RetrofitClient;
 import devandroid.queila.applistaalunos.model.Pessoa;
@@ -29,11 +26,11 @@ public class PessoaController {
         listaVip.putString("Curso", pessoa.getCurso());
         listaVip.putString("Telefone", pessoa.getTelefone());
         listaVip.apply();
-    };
+    }
     public void limpar(){
         listaVip.clear();
         listaVip.apply();
-    };
+    }
     public Pessoa buscarLocalmente(){
         Pessoa pessoa = new Pessoa();
         pessoa.setPrimeiroNome(sharedPreferences.getString("Primeiro Nome","-"));
@@ -42,16 +39,15 @@ public class PessoaController {
         pessoa.setTelefone(sharedPreferences.getString("Telefone","-"));
 
     return pessoa;}
-    public void finalizar(){};
+    public void finalizar(){}
 
-    public void salvarBD(Pessoa pessoa, Context context) {
+    public void salvarBD(Pessoa pessoa) {
         PessoaApi pessoaApi = RetrofitClient.getRetrofitInstance().create(PessoaApi.class);
         Call<Pessoa> call = pessoaApi.cadastrar(pessoa);
         call.enqueue(new Callback<Pessoa>() {
             @Override
             public void onResponse(Call<Pessoa> call, Response<Pessoa> response) {
                 if (response.isSuccessful()) {
-                    String resposta = "Salvo através da API com sucesso!";
                     Log.e("conexão","salvo"+pessoa);
                 } else {
                     Log.e("conexão","Não foi possível conectar na api"+pessoa);
