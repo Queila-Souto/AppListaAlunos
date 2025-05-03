@@ -48,17 +48,21 @@ Button btnfinalizar;
                 pessoa.setSobrenome(edittxtsobrenome.getText().toString());
                 pessoa.setTelefone(edittxttelefone.getText().toString());
                 pessoa.setCurso(edittxtcurso.getText().toString());
-                pessoaController.salvarLocalmente(pessoa);
-                pessoaController.salvarBD(pessoa, new PessoaCallBack() {
-                    @Override
-                    public void onSuccess(String mensagem) {
-                        Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
-                    }
-                    @Override
-                    public void onError(String mensagem) {
-                        Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
-                    }
-                });
+                if (!camposPreenchidos()){
+                    Toast.makeText(MainActivity.this, "Preencha todos os campos", Toast.LENGTH_LONG).show();
+                } else {
+                    pessoaController.salvarLocalmente(pessoa);
+                    pessoaController.salvarBD(pessoa, new PessoaCallBack() {
+                        @Override
+                        public void onSuccess(String mensagem) {
+                            Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
+                        }
+                        @Override
+                        public void onError(String mensagem) {
+                            Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
         btnlimpar.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +86,13 @@ Button btnfinalizar;
                 Toast.makeText(MainActivity.this, "Dados recuperados",Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private boolean camposPreenchidos() {
+        return !edittxtnome.getText().toString().isEmpty()
+                && !edittxtsobrenome.getText().toString().isEmpty()
+                && !edittxttelefone.getText().toString().isEmpty()
+                && !edittxtcurso.getText().toString().isEmpty();
     }
 
     private void preencherCampos() {
