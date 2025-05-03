@@ -12,8 +12,9 @@ import devandroid.queila.applistaalunos.controller.PessoaController;
 import devandroid.queila.applistaalunos.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
-Pessoa pessoa;
 
+Pessoa pessoa;
+PessoaController pessoaController;
 EditText edittxtnome;
 EditText edittxtsobrenome;
 EditText edittxtcurso;
@@ -27,44 +28,12 @@ Button btnfinalizar;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pessoa = new Pessoa();
-        PessoaController controller = new PessoaController(MainActivity.this);
+        inicializarObjetos();
+        preencherCampos();
+        configurarBotoes();
+    }
 
-        edittxtnome = findViewById(R.id.editTextText2);
-        edittxtsobrenome = findViewById(R.id.editTextText3);
-        edittxtcurso = findViewById(R.id.editTextText4);
-        edittxttelefone = findViewById(R.id.editTextText5);
-        btnlimpar = findViewById(R.id.buttonLimpar);
-        btnRecuperar = findViewById(R.id.buttonRecuperar);
-        btnsalvar = findViewById(R.id.buttonSalvar);
-        btnfinalizar = findViewById(R.id.buttonFinalizar);
-
-        edittxtnome.setText(pessoa.getPrimeiroNome());
-        edittxtsobrenome.setText(pessoa.getSobrenome());
-        edittxtcurso.setText(pessoa.getCurso());
-        edittxttelefone.setText(pessoa.getTelefone());
-
-        btnlimpar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                edittxtnome.setText("");
-                edittxtsobrenome.setText("");
-                edittxtcurso.setText("");
-                edittxttelefone.setText("");
-                controller.limpar();
-            }
-        });
-        btnRecuperar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pessoa = controller.buscarLocalmente();
-                edittxtnome.setText(pessoa.getPrimeiroNome());
-                edittxtsobrenome.setText(pessoa.getSobrenome());
-                edittxtcurso.setText(pessoa.getCurso());
-                edittxttelefone.setText(pessoa.getTelefone());
-                Toast.makeText(MainActivity.this, "Dados recuperados",Toast.LENGTH_LONG).show();
-            }
-        });
+    private void configurarBotoes() {
         btnfinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,20 +48,59 @@ Button btnfinalizar;
                 pessoa.setSobrenome(edittxtsobrenome.getText().toString());
                 pessoa.setTelefone(edittxttelefone.getText().toString());
                 pessoa.setCurso(edittxtcurso.getText().toString());
-
-                controller.salvarLocalmente(pessoa);
-                controller.salvarBD(pessoa, new PessoaCallBack() {
+                pessoaController.salvarLocalmente(pessoa);
+                pessoaController.salvarBD(pessoa, new PessoaCallBack() {
                     @Override
                     public void onSuccess(String mensagem) {
                         Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onError(String mensagem) {
                         Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
                     }
                 });
-
             }
         });
-    }}
+        btnlimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edittxtnome.setText("");
+                edittxtsobrenome.setText("");
+                edittxtcurso.setText("");
+                edittxttelefone.setText("");
+                pessoaController.limpar();
+            }
+        });
+        btnRecuperar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pessoa = pessoaController.buscarLocalmente();
+                edittxtnome.setText(pessoa.getPrimeiroNome());
+                edittxtsobrenome.setText(pessoa.getSobrenome());
+                edittxtcurso.setText(pessoa.getCurso());
+                edittxttelefone.setText(pessoa.getTelefone());
+                Toast.makeText(MainActivity.this, "Dados recuperados",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void preencherCampos() {
+        edittxtnome.setText(pessoa.getPrimeiroNome());
+        edittxtsobrenome.setText(pessoa.getSobrenome());
+        edittxtcurso.setText(pessoa.getCurso());
+        edittxttelefone.setText(pessoa.getTelefone());
+    }
+
+    private void inicializarObjetos() {
+        pessoa = new Pessoa();
+        pessoaController = new PessoaController(MainActivity.this);
+        edittxtnome = findViewById(R.id.editTextText2);
+        edittxtsobrenome = findViewById(R.id.editTextText3);
+        edittxtcurso = findViewById(R.id.editTextText4);
+        edittxttelefone = findViewById(R.id.editTextText5);
+        btnlimpar = findViewById(R.id.buttonLimpar);
+        btnRecuperar = findViewById(R.id.buttonRecuperar);
+        btnsalvar = findViewById(R.id.buttonSalvar);
+        btnfinalizar = findViewById(R.id.buttonFinalizar);
+    }
+}
