@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import devandroid.queila.applistaalunos.R;
+import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.controller.PessoaController;
 import devandroid.queila.applistaalunos.model.Pessoa;
 
@@ -80,7 +81,17 @@ Button btnfinalizar;
                 pessoa.setCurso(edittxtcurso.getText().toString());
 
                 controller.salvarLocalmente(pessoa);
-                controller.salvarBD(pessoa);
+                controller.salvarBD(pessoa, new PessoaCallBack() {
+                    @Override
+                    public void onSuccess(String mensagem) {
+                        Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onError(String mensagem) {
+                        Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
+                    }
+                });
 
             }
         });
