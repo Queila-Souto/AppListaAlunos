@@ -69,7 +69,8 @@
         android:autofillHints="phone"
         android:ems="10"
         android:hint="@string/txt_hint_tel"
-        android:inputType="text"
+        android:inputType="number"
+        android:maxLength="14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText4" />

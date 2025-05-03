@@ -29,7 +29,6 @@ Button btnfinalizar;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicializarObjetos();
-        preencherCampos();
         configurarBotoes();
     }
 
@@ -48,9 +47,18 @@ Button btnfinalizar;
                 pessoa.setSobrenome(edittxtsobrenome.getText().toString());
                 pessoa.setTelefone(edittxttelefone.getText().toString());
                 pessoa.setCurso(edittxtcurso.getText().toString());
+                String telefoneLimpo = TelefoneMascara.limpar(edittxttelefone.getText().toString());
+
+
                 if (!camposPreenchidos()){
                     Toast.makeText(MainActivity.this, "Preencha todos os campos", Toast.LENGTH_LONG).show();
                 } else {
+                    if (telefoneLimpo.length() < 10 || telefoneLimpo.length() > 11) {
+                        Toast.makeText(MainActivity.this, "Telefone inválido", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    pessoa.setTelefone(telefoneLimpo);
                     pessoaController.salvarLocalmente(pessoa);
                     pessoaController.salvarBD(pessoa, new PessoaCallBack() {
                         @Override
@@ -95,13 +103,6 @@ Button btnfinalizar;
                 && !edittxtcurso.getText().toString().isEmpty();
     }
 
-    private void preencherCampos() {
-        edittxtnome.setText(pessoa.getPrimeiroNome());
-        edittxtsobrenome.setText(pessoa.getSobrenome());
-        edittxtcurso.setText(pessoa.getCurso());
-        edittxttelefone.setText(pessoa.getTelefone());
-    }
-
     private void inicializarObjetos() {
         pessoa = new Pessoa();
         pessoaController = new PessoaController(MainActivity.this);
@@ -109,6 +110,7 @@ Button btnfinalizar;
         edittxtsobrenome = findViewById(R.id.editTextText3);
         edittxtcurso = findViewById(R.id.editTextText4);
         edittxttelefone = findViewById(R.id.editTextText5);
+        edittxttelefone.addTextChangedListener(TelefoneMascara.insert(edittxttelefone));
         btnlimpar = findViewById(R.id.buttonLimpar);
         btnRecuperar = findViewById(R.id.buttonRecuperar);
         btnsalvar = findViewById(R.id.buttonSalvar);
