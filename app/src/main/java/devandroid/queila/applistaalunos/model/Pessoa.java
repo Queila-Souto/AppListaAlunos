@@ -1,18 +1,14 @@
 package devandroid.queila.applistaalunos.model;
 
+import androidx.annotation.NonNull;
+
 public class Pessoa {
     private String primeiroNome;
     private String sobrenome;
     private String curso;
     private String telefone;
 
-    public Pessoa (String primeiroNome, String sobrenome, String telefone, String curso){
-        this.primeiroNome = primeiroNome;
-        this.sobrenome = sobrenome;
-        this.telefone = telefone;
-        this.curso = curso;}
-
-    public Pessoa () {};
+    public Pessoa () {}
 
     public String getSobrenome() {
         return sobrenome;
@@ -38,6 +34,7 @@ public class Pessoa {
     public void setCurso(String curso) {
         this.curso = curso;
     }
+    @NonNull
     @Override
     public String toString() {
         return "Pessoa{" +
