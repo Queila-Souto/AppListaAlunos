@@ -2,6 +2,9 @@ package devandroid.queila.applistaalunos.controller;
 
 import android.content.SharedPreferences;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import devandroid.queila.applistaalunos.api.PessoaApi;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.api.RetrofitClient;
@@ -28,7 +31,7 @@ public class PessoaController {
         listaVip.putString("Telefone", pessoa.getTelefone());
         listaVip.apply();
     }
-    public void limpar(){
+    public void limparLocal(){
         listaVip.clear();
         listaVip.apply();
     }
@@ -40,14 +43,13 @@ public class PessoaController {
         pessoa.setTelefone(sharedPreferences.getString("Telefone","-"));
 
     return pessoa;}
-    public void finalizar(){}
 
     public void salvarBD(Pessoa pessoa, PessoaCallBack pessoaCallBack) {
         PessoaApi pessoaApi = RetrofitClient.getRetrofitInstance().create(PessoaApi.class);
         Call<Pessoa> call = pessoaApi.cadastrar(pessoa);
         call.enqueue(new Callback<Pessoa>() {
             @Override
-            public void onResponse(Call<Pessoa> call, Response<Pessoa> response) {
+            public void onResponse(@NonNull Call<Pessoa> call, @NonNull Response<Pessoa> response) {
                 if (response.isSuccessful()) {
                     Log.e("conexão","salvo"+pessoa);
                     pessoaCallBack.onSuccess("Aluno salvo com sucesso");
@@ -58,7 +60,7 @@ public class PessoaController {
             }
 
             @Override
-            public void onFailure(Call<Pessoa> call, Throwable t) {
+            public void onFailure(@NonNull Call<Pessoa> call, @NonNull Throwable t) {
                 Log.e("conexão","Não foi possível conectar na api"+pessoa);
                 pessoaCallBack.onError("Serviço indisponível. Tente mais tarde.");
             }

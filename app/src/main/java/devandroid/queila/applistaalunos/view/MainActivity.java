@@ -71,7 +71,10 @@ Button btnfinalizar;
             });
         });
 
-        btnlimpar.setOnClickListener(v -> limparCampos());
+        btnlimpar.setOnClickListener(v -> {
+            limparCampos();
+            pessoaController.limparLocal();
+        });
 
         btnRecuperar.setOnClickListener(v -> {
             pessoa = pessoaController.buscarLocalmente();
@@ -88,7 +91,6 @@ Button btnfinalizar;
         edittxtsobrenome.setText("");
         edittxtcurso.setText("");
         edittxttelefone.setText("");
-        pessoaController.limpar();
     }
 
     private void inicializarObjetos() {
