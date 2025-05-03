@@ -1,4 +1,4 @@
-package devandroid.queila.applistaalunos.view;
+package devandroid.queila.applistaalunos.util;
 
 import android.text.Editable;
 import android.text.TextWatcher;

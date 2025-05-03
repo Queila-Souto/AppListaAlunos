@@ -10,6 +10,8 @@ import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.controller.PessoaController;
 import devandroid.queila.applistaalunos.model.Pessoa;
+import devandroid.queila.applistaalunos.util.PessoaValidador;
+import devandroid.queila.applistaalunos.util.TelefoneMascara;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,38 +42,36 @@ Button btnfinalizar;
                 finish();
             }
         });
-        btnsalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pessoa.setPrimeiroNome(edittxtnome.getText().toString());
-                pessoa.setSobrenome(edittxtsobrenome.getText().toString());
-                pessoa.setTelefone(edittxttelefone.getText().toString());
-                pessoa.setCurso(edittxtcurso.getText().toString());
-                String telefoneLimpo = TelefoneMascara.limpar(edittxttelefone.getText().toString());
+        btnsalvar.setOnClickListener(v -> {
+            pessoa.setPrimeiroNome(edittxtnome.getText().toString());
+            pessoa.setSobrenome(edittxtsobrenome.getText().toString());
+            pessoa.setCurso(edittxtcurso.getText().toString());
+            pessoa.setTelefone(edittxttelefone.getText().toString());
 
-
-                if (!camposPreenchidos()){
-                    Toast.makeText(MainActivity.this, "Preencha todos os campos", Toast.LENGTH_LONG).show();
-                } else {
-                    if (telefoneLimpo.length() < 10 || telefoneLimpo.length() > 11) {
-                        Toast.makeText(MainActivity.this, "Telefone inválido", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    pessoa.setTelefone(telefoneLimpo);
-                    pessoaController.salvarLocalmente(pessoa);
-                    pessoaController.salvarBD(pessoa, new PessoaCallBack() {
-                        @Override
-                        public void onSuccess(String mensagem) {
-                            Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
-                        }
-                        @Override
-                        public void onError(String mensagem) {
-                            Toast.makeText(MainActivity.this, mensagem,Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
+            if (!PessoaValidador.validarCamposObrigatorios(pessoa)) {
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show();
+                return;
             }
+
+            if (!PessoaValidador.telefoneValido(pessoa.getTelefone())) {
+                edittxttelefone.setError("Telefone inválido");
+                return;
+            }
+
+            pessoa.setTelefone(TelefoneMascara.limpar(pessoa.getTelefone()));
+
+            pessoaController.salvarLocalmente(pessoa);
+            pessoaController.salvarBD(pessoa, new PessoaCallBack() {
+                @Override
+                public void onSuccess(String mensagem) {
+                    Toast.makeText(MainActivity.this, mensagem, Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onError(String mensagem) {
+                    Toast.makeText(MainActivity.this, mensagem, Toast.LENGTH_LONG).show();
+                }
+            });
         });
         btnlimpar.setOnClickListener(new View.OnClickListener() {
             @Override
