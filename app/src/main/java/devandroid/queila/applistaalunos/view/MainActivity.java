@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
-import devandroid.queila.applistaalunos.ListagemActivity;
+
+import java.util.List;
+
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.controller.PessoaController;
@@ -68,6 +70,11 @@ Button btnfinalizar;
                 public void onSuccess(String mensagem) {
                     Toast.makeText(MainActivity.this, mensagem, Toast.LENGTH_LONG).show();
                     limparCampos();
+                }
+
+                @Override
+                public void onSuccess(List<Pessoa> pessoas) {
+
                 }
 
                 @Override
