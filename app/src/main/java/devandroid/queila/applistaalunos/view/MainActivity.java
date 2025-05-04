@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import androidx.appcompat.widget.Toolbar;
 import devandroid.queila.applistaalunos.ListagemActivity;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
 Pessoa pessoa;
 PessoaController pessoaController;
+Toolbar toolbar;
 EditText edittxtnome;
 EditText edittxtsobrenome;
 EditText edittxtcurso;
