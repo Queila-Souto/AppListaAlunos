@@ -27,6 +27,7 @@
         android:layout_margin="16dp"
         android:layout_marginTop="32dp"
         android:autofillHints="name"
+        android:ems="10"
         android:hint="@string/txt_hint_nome"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +40,9 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="16dp"
+        android:layout_marginTop="8dp"
         android:autofillHints="last name"
+        android:ems="10"
         android:hint="@string/txt_hint_sobrenome"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +55,7 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:autofillHints="course"
+        android:ems="10"
         android:hint="@string/txt_hint_curso"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,63 +69,65 @@
         android:layout_height="48dp"
         android:layout_margin="16dp"
         android:autofillHints="phone"
+        android:ems="10"
         android:hint="@string/txt_hint_tel"
         android:inputType="number"
         android:maxLength="14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
 
     <Button
         android:id="@+id/buttonLimpar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/primary_button"
         android:text="@string/button_limpar"
-        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonListar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/buttonRecuperar"
-        app:layout_constraintTop_toBottomOf="@id/editTextText5"
-        app:layout_constraintBottom_toTopOf="@id/buttonListar"
-       />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
 
     <Button
         android:id="@+id/buttonRecuperar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/primary_button"
         android:text="@string/button_recuperar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonListar"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSalvar"
         app:layout_constraintStart_toEndOf="@id/buttonLimpar"
-        app:layout_constraintEnd_toStartOf="@id/buttonSalvar"
-        app:layout_constraintTop_toBottomOf="@id/editTextText5"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
 
     <Button
         android:id="@+id/buttonListar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
         android:backgroundTint="@color/primary_button"
         android:text="@string/button_listar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonRecuperar"
-        app:layout_constraintBottom_toTopOf="@id/buttonFinalizar"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/buttonFinalizar"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRecuperar" />
 
     <Button
         android:id="@+id/buttonSalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/primary_button"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/primary_button"
         android:text="@string/button_salvar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonListar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/buttonRecuperar"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText5"
-        />
+        app:layout_constraintStart_toEndOf="@+id/buttonLimpar"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
 
     <Button
         android:id="@+id/buttonFinalizar"
@@ -130,9 +136,9 @@
         android:layout_margin="16dp"
         android:backgroundTint="@color/primary_button"
         android:text="@string/button_finalizar"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonListar"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonListar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
