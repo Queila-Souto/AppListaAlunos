@@ -1,10 +1,16 @@
 package devandroid.queila.applistaalunos.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
+
+import java.util.List;
+
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.controller.PessoaController;
@@ -16,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 Pessoa pessoa;
 PessoaController pessoaController;
+Toolbar toolbar;
 EditText edittxtnome;
 EditText edittxtsobrenome;
 EditText edittxtcurso;
@@ -23,6 +30,7 @@ EditText edittxttelefone;
 Button btnlimpar;
 Button btnRecuperar;
 Button btnsalvar;
+Button btnlistar;
 Button btnfinalizar;
 
     @Override
@@ -65,6 +73,11 @@ Button btnfinalizar;
                 }
 
                 @Override
+                public void onSuccess(List<Pessoa> pessoas) {
+
+                }
+
+                @Override
                 public void onError(String mensagem) {
                     Toast.makeText(MainActivity.this, mensagem, Toast.LENGTH_LONG).show();
                 }
@@ -83,6 +96,10 @@ Button btnfinalizar;
             edittxtcurso.setText(pessoa.getCurso());
             edittxttelefone.setText(pessoa.getTelefone());
             Toast.makeText(MainActivity.this, "Dados recuperados",Toast.LENGTH_LONG).show();
+        });
+        btnlistar.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, ListagemActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -104,6 +121,7 @@ Button btnfinalizar;
         btnlimpar = findViewById(R.id.buttonLimpar);
         btnRecuperar = findViewById(R.id.buttonRecuperar);
         btnsalvar = findViewById(R.id.buttonSalvar);
+        btnlistar = findViewById(R.id.buttonListar);
         btnfinalizar = findViewById(R.id.buttonFinalizar);
     }
 }

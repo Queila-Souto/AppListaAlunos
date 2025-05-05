@@ -1,0 +1,70 @@
+package devandroid.queila.applistaalunos.view;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import devandroid.queila.applistaalunos.R;
+import devandroid.queila.applistaalunos.api.PessoaCallBack;
+import devandroid.queila.applistaalunos.controller.PessoaController;
+import devandroid.queila.applistaalunos.model.Pessoa;
+
+public class ListagemActivity extends AppCompatActivity {
+    private RecyclerView recyclerView;
+    private PessoaAdapter adapter;
+    PessoaController pessoaController;
+    private List<Pessoa> listaAlunos = new ArrayList<>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.listagem);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new PessoaAdapter(listaAlunos);
+        recyclerView.setAdapter(adapter);
+        pessoaController = new PessoaController(this);
+
+        carregarAlunos();
+    }
+
+    private void carregarAlunos() {
+        pessoaController.listarAlunos(new PessoaCallBack() {
+            @Override
+            public void onSuccess(String mensagem) {
+                Log.e("conexão", "lista criada - " + mensagem);
+            }
+
+            @Override
+            public void onSuccess(List<Pessoa> pessoas) {
+
+                listaAlunos.clear();
+                listaAlunos.addAll(pessoas);
+                adapter.notifyDataSetChanged();
+                Log.e("conexão", "lista criada " + listaAlunos.toString());
+
+            }
+
+            @Override
+            public void onError(String mensagem) {
+                Log.e("conexão", "erro ao conectar" + listaAlunos.toString());
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+}
