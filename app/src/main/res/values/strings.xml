@@ -10,4 +10,8 @@
     <string name="button_listar">Listar</string>
     <string name="button_salvar">Salvar</string>
     <string name="button_finalizar">Finalizar</string>
+    <string name="bem_vindo">Bem-Vindo</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
 </resources>
