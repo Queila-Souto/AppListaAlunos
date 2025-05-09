@@ -7,13 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primary_button">#63A5EF</color>
+    <color name="primary_button">#ffeef2</color>
     <color name="pressed_button">#3F8DDC</color>
     <color name="secundary_button">#A1D9D1</color>
     <color name="secundary_button_text">#003B46</color>
     <color name="pressed_secundary_button_text">#72C1B8</color>
-    <color name="backgroud_app">#F7FAFC</color>
+    <color name="backgroud_app">#ffeef2</color>
     <color name="Login_primary">#EA6D35</color>
     <color name="Login_edittext">#756c6c</color>
+    <color name="text">#395e91</color>
+
 
 </resources>
