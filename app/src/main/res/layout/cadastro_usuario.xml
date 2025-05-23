@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/backgroud_app">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/backgroud_app">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/backgroud_app">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/top_background2" />
+
+            <Button
+                android:id="@+id/buttonVoltar"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:padding="8dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="32dp"
+
+                android:layout_weight="1"
+                android:text="@string/voltar"
+                android:textColor="@color/text"
+                android:textStyle="bold"
+                android:background="@drawable/button_background" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:textColor="@color/Login_primary"
+                android:text="@string/Cadastre_se" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="16dp"
+                android:padding="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:drawableStart="@drawable/name"
+                android:hint="@string/digite_seu_nome"
+                android:background="@drawable/edittext_background"
+                android:textColorHint="@color/Login_edittext"/>
+
+            <EditText
+                android:id="@+id/editTextLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="16dp"
+                android:padding="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:drawableStart="@drawable/email"
+                android:hint="@string/digite_seu_email"
+                android:background="@drawable/edittext_background"
+                android:textColorHint="@color/Login_edittext"/>
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="16dp"
+                android:padding="8dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/password"
+                android:hint="@string/digite_sua_senha"
+                android:background="@drawable/edittext_background"
+                android:textColorHint="@color/Login_edittext"/>
+<EditText
+                android:id="@+id/editTextConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="16dp"
+                android:padding="8dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/password"
+                android:hint="@string/confirme_sua_senha"
+                android:background="@drawable/edittext_background"
+                android:textColorHint="@color/Login_edittext"/>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:layout_gravity="end"
+                android:layout_margin="16dp"
+                android:layout_marginEnd="32dp"
+                app:srcCompat="@drawable/btn_arrow2" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,13 @@
     <string name="button_salvar">Salvar</string>
     <string name="button_finalizar">Finalizar</string>
     <string name="bem_vindo">Bem-Vindo</string>
+    <string name="Cadastre_se">Cadastre-se</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
+    <string name="digite_seu_email">Digite seu E-mail </string>
+    <string name="digite_seu_nome">Digite seu Nome Completo </string>
     <string name="senha">Senha</string>
+    <string name="digite_sua_senha">Digite sua Senha</string>
+    <string name="confirme_sua_senha">Confirme sua Senha</string>
+    <string name="voltar">Voltar</string>
 </resources>
