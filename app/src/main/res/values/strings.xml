@@ -20,4 +20,5 @@
     <string name="digite_sua_senha">Digite sua Senha</string>
     <string name="confirme_sua_senha">Confirme sua Senha</string>
     <string name="voltar">Voltar</string>
+    <string name="novo_usuario">Novo Usuário</string>
 </resources>

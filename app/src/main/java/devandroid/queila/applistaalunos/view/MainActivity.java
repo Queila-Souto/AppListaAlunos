@@ -32,6 +32,7 @@ Button btnRecuperar;
 Button btnsalvar;
 Button btnlistar;
 Button btnfinalizar;
+Button btncadastrarusuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +102,10 @@ Button btnfinalizar;
             Intent intent = new Intent(MainActivity.this, Login.class);
             startActivity(intent);
         });
+        btncadastrarusuario.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, CadastroUsuario.class);
+            startActivity(intent);
+        });
     }
 
     private void limparCampos() {
@@ -123,5 +128,6 @@ Button btnfinalizar;
         btnsalvar = findViewById(R.id.buttonSalvar);
         btnlistar = findViewById(R.id.buttonListar);
         btnfinalizar = findViewById(R.id.buttonFinalizar);
+        btncadastrarusuario = findViewById(R.id.buttonCadastrarUsuario);
     }
 }
