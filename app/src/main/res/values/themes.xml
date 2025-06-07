@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">#63A5EF</item>
         <item name="colorPrimaryVariant">#3F8DDC</item>
-        <item name="colorOnPrimary">@color/backgroud_app</item>
+        <item name="colorOnPrimary">#003B46</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#A1D9D1</item>
         <item name="colorSecondaryVariant">#72C1B8</item>
