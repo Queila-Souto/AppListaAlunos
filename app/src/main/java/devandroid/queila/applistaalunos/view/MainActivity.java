@@ -14,13 +14,13 @@ import java.util.List;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.controller.PessoaController;
-import devandroid.queila.applistaalunos.model.Pessoa;
+import devandroid.queila.applistaalunos.model.Aluno;
 import devandroid.queila.applistaalunos.util.PessoaValidador;
 import devandroid.queila.applistaalunos.util.TelefoneMascara;
 
 public class MainActivity extends AppCompatActivity {
 
-Pessoa pessoa;
+Aluno pessoa;
 PessoaController pessoaController;
 Toolbar toolbar;
 EditText edittxtnome;
@@ -74,7 +74,7 @@ Button btncadastrarusuario;
                 }
 
                 @Override
-                public void onSuccess(List<Pessoa> pessoas) {
+                public void onSuccess(List<Aluno> pessoas) {
 
                 }
 
@@ -116,7 +116,7 @@ Button btncadastrarusuario;
     }
 
     private void inicializarObjetos() {
-        pessoa = new Pessoa();
+        pessoa = new Aluno();
         pessoaController = new PessoaController(MainActivity.this);
         edittxtnome = findViewById(R.id.editTextText2);
         edittxtsobrenome = findViewById(R.id.editTextText3);
