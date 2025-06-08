@@ -1,42 +1,48 @@
 package devandroid.queila.applistaalunos.model;
 
 public class Usuario {
-    private String Nome;
-    private String Login;
-    private String Senha;
+
+    public Usuario(String nome, String email, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+    private String nome;
+    private String email;
+    private String senha;
 
     public Usuario() {}
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
     }
 
-    public String getLogin() {
-        return Login;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLogin(String login) {
-        Login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
-        return Senha;
+        return senha;
     }
 
     public void setSenha(String senha) {
-        Senha = senha;
+        this.senha = senha;
     }
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "Nome='" + Nome + '\'' +
-                ", Login='" + Login + '\'' +
-                ", Senha='" + Senha + '\'' +
+                "Nome='" + nome + '\'' +
+                ", Login='" + email + '\'' +
+                ", Senha='" + senha + '\'' +
                 '}';
     }
 }

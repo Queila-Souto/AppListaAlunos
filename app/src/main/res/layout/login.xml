@@ -39,7 +39,7 @@
                 android:text="@string/bem_vindo" />
 
             <EditText
-                android:id="@+id/editTextLogin"
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="32dp"

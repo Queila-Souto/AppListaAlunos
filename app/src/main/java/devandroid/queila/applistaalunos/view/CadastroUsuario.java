@@ -6,19 +6,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import java.util.List;
 
 import devandroid.queila.applistaalunos.R;
+import devandroid.queila.applistaalunos.api.UsuarioCallBack;
+import devandroid.queila.applistaalunos.controller.UsuarioController;
+import devandroid.queila.applistaalunos.model.Usuario;
 
 public class CadastroUsuario extends AppCompatActivity {
     Button buttonVoltar;
     ImageView buttonCadastrar;
     EditText editTextName;
-    EditText editTextLogin;
+    EditText editTextEmail;
     EditText editTextPassword;
     EditText editTextConfirmPassword;
 
@@ -37,17 +38,41 @@ public class CadastroUsuario extends AppCompatActivity {
         });
         buttonCadastrar.setOnClickListener(v->{
             String nome = editTextName.getText().toString();
-            String login = editTextLogin.getText().toString();
+            String email = editTextEmail.getText().toString();
             String senha = editTextPassword.getText().toString();
             String confirmarSenha = editTextConfirmPassword.getText().toString();
-            validarCampos(nome, login, senha, confirmarSenha);
+            validarCampos(nome, email, senha, confirmarSenha);
+            Usuario usuario = new Usuario(nome, email, senha);
+            UsuarioController usuarioController = new UsuarioController();
+            usuarioController.salvarBD(usuario, new UsuarioCallBack() {
+                @Override
+                public void onSuccess(String mensagem) {
+                    Toast.makeText(CadastroUsuario.this, mensagem, Toast.LENGTH_LONG).show();
+                    limparCampos();
+                }
+
+                @Override
+                public void onError(String mensagem) {
+                    Toast.makeText(CadastroUsuario.this, mensagem, Toast.LENGTH_LONG).show();
+                }
+            });
+
+
         });
 
 
     }
 
-    private void validarCampos(String nome, String login, String senha, String confirmarSenha) {
-        if (login.isEmpty() || login.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()) {
+    private void limparCampos() {
+        editTextName.setText("");
+        editTextEmail.setText("");
+        editTextPassword.setText("");
+        editTextConfirmPassword.setText("");
+
+    }
+
+    private void validarCampos(String nome, String email, String senha, String confirmarSenha) {
+        if (email.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -71,7 +96,7 @@ public class CadastroUsuario extends AppCompatActivity {
     private void incializarObjetos() {
         buttonVoltar = findViewById(R.id.buttonVoltar);
         buttonCadastrar = findViewById(R.id.imageView3);
-        editTextLogin = findViewById(R.id.editTextLogin);
+        editTextEmail = findViewById(R.id.editTextEmail);
         editTextName = findViewById(R.id.editTextName);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);

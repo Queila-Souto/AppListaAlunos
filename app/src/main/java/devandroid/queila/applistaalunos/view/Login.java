@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void inicializarObjetos() {
-        editTextEmail = findViewById(R.id.editTextLogin);
+        editTextEmail = findViewById(R.id.editTextEmail);
         editTextSenha = findViewById(R.id.editTextPassword);
         buttonLogar = findViewById(R.id.imageView3);
         buttonNovoUsuario = findViewById(R.id.textView2);
