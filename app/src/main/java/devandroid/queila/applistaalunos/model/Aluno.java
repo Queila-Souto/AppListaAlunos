@@ -2,13 +2,13 @@ package devandroid.queila.applistaalunos.model;
 
 import androidx.annotation.NonNull;
 
-public class Pessoa {
+public class Aluno {
     private String primeiroNome;
     private String sobrenome;
     private String curso;
     private String telefone;
 
-    public Pessoa () {}
+    public Aluno() {}
 
     public String getSobrenome() {
         return sobrenome;

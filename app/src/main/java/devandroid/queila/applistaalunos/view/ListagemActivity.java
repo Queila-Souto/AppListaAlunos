@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +13,13 @@ import java.util.List;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.controller.PessoaController;
-import devandroid.queila.applistaalunos.model.Pessoa;
+import devandroid.queila.applistaalunos.model.Aluno;
 
 public class ListagemActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PessoaAdapter adapter;
     PessoaController pessoaController;
-    private List<Pessoa> listaAlunos = new ArrayList<>();
+    private List<Aluno> listaAlunos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class ListagemActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSuccess(List<Pessoa> pessoas) {
+            public void onSuccess(List<Aluno> pessoas) {
 
                 listaAlunos.clear();
                 listaAlunos.addAll(pessoas);

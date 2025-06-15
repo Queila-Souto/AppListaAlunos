@@ -1,11 +1,11 @@
 package devandroid.queila.applistaalunos.util;
 
-import devandroid.queila.applistaalunos.model.Pessoa;
+import devandroid.queila.applistaalunos.model.Aluno;
 
 // PessoaValidator.java
     public class PessoaValidador {
 
-        public static boolean validarCamposObrigatorios(Pessoa pessoa) {
+        public static boolean validarCamposObrigatorios(Aluno pessoa) {
             return !(pessoa.getPrimeiroNome().isEmpty() ||
                     pessoa.getSobrenome().isEmpty() ||
                     pessoa.getCurso().isEmpty() ||

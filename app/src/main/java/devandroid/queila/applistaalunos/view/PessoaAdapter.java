@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import devandroid.queila.applistaalunos.R;
-import devandroid.queila.applistaalunos.model.Pessoa;
+import devandroid.queila.applistaalunos.model.Aluno;
 
 public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.PessoaViewHolder> {
 
-    private List<Pessoa> lista;
+    private List<Aluno> lista;
 
-    public PessoaAdapter(List<Pessoa> lista) {
+    public PessoaAdapter(List<Aluno> lista) {
         this.lista = lista;
     }
 
@@ -31,7 +31,7 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.PessoaView
 
     @Override
     public void onBindViewHolder(@NonNull PessoaViewHolder holder, int position) {
-        Pessoa pessoa = lista.get(position);
+        Aluno pessoa = lista.get(position);
         holder.textNome.setText(pessoa.getPrimeiroNome() + " " + pessoa.getSobrenome());
         holder.textTelefone.setText(pessoa.getTelefone());
         holder.textCurso.setText(pessoa.getCurso());
