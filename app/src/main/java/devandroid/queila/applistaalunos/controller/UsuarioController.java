@@ -21,27 +21,26 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UsuarioController {
-    private List<Usuario> listaUsuarios = new ArrayList<>();
     private UsuarioApi usuarioApi = RetrofitClient.getRetrofitInstance().create(UsuarioApi.class);
 
     public void salvarBD(Usuario usuario, UsuarioCallBack usuarioCallBack) {
-        Call<Usuario> call = usuarioApi.cadastrar(usuario);
-        call.enqueue(new Callback<Usuario>() {
+        Call<Void> call = usuarioApi.cadastrar(usuario);
+        call.enqueue(new Callback<Void>() {
 
             @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Log.e("conexão", "usuário salvo" + usuario);
+                    Log.e("response", "usuário salvo" + usuario);
                     usuarioCallBack.onSuccess("Usuário salvo com sucesso");
                 } else {
-                    Log.e("conexão", "Não foi possível conectar na api ->" + usuario);
+                    Log.e("response", "Não foi possível conectar na api ->" + usuario);
                     usuarioCallBack.onError("Não foi possível salvar o usuário");
                 }
             }
 
             @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                Log.e("conexão", "Não foi possível conectar na api -> " + usuario);
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("erro", "erro" + t);
                 usuarioCallBack.onError("Serviço indisponível. Tente mais tarde.");
             }
         });

@@ -7,7 +7,7 @@ import retrofit2.http.POST;
 
 public interface UsuarioApi {
     @POST("/usuario")
-    Call<Usuario> cadastrar(@Body Usuario usuario);
+    Call<Void> cadastrar(@Body Usuario usuario);
 
 
 }
