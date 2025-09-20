@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "http://10.0.2.2:8080/"; // localhost no emulador Android
+    private static final String BASE_URL = "https://apilistavipalunos.azurewebsites.net/"; // localhost no emulador Android
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofitInstance() {

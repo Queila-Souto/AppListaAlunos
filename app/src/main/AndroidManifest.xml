@@ -20,7 +20,8 @@
             android:exported="false" />
         <activity
             android:name=".view.ListagemActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MeuApp.ActionBar"/>
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

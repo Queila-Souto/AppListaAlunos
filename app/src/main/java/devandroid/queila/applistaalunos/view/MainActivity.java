@@ -99,7 +99,7 @@ Button btncadastrarusuario;
             Toast.makeText(MainActivity.this, "Dados recuperados",Toast.LENGTH_LONG).show();
         });
         btnlistar.setOnClickListener(v->{
-            Intent intent = new Intent(MainActivity.this, Login.class);
+            Intent intent = new Intent(MainActivity.this, ListagemActivity.class);
             startActivity(intent);
         });
         btncadastrarusuario.setOnClickListener(v->{

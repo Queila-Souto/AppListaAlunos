@@ -9,6 +9,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
@@ -25,13 +26,15 @@ public class ListagemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listagem);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PessoaAdapter(listaAlunos);
         recyclerView.setAdapter(adapter);
         pessoaController = new PessoaController(this);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         carregarAlunos();
     }
 
