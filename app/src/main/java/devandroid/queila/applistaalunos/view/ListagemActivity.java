@@ -42,7 +42,6 @@ public class ListagemActivity extends AppCompatActivity {
         pessoaController.listarAlunos(new PessoaCallBack() {
             @Override
             public void onSuccess(String mensagem) {
-                Log.e("conexão", "lista criada - " + mensagem);
             }
 
             @Override
@@ -51,13 +50,11 @@ public class ListagemActivity extends AppCompatActivity {
                 listaAlunos.clear();
                 listaAlunos.addAll(pessoas);
                 adapter.notifyDataSetChanged();
-                Log.e("conexão", "lista criada " + listaAlunos.toString());
 
             }
 
             @Override
             public void onError(String mensagem) {
-                Log.e("conexão", "erro ao conectar" + listaAlunos.toString());
 
             }
         });

@@ -34,7 +34,6 @@ public class Login extends AppCompatActivity {
         buttonNovoUsuario.setOnClickListener(v -> {
         });
         buttonLogar.setOnClickListener(v -> {
-           Log.e("AUTH","APERTEI O BOTAO");
             String email = editTextEmail.getText().toString();
             String senha = editTextSenha.getText().toString();
             UsuarioController usuarioController = new UsuarioController();

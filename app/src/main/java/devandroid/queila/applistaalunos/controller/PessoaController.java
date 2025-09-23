@@ -61,17 +61,14 @@ public class PessoaController {
             @Override
             public void onResponse(@NonNull Call<Aluno> call, @NonNull Response<Aluno> response) {
                 if (response.isSuccessful()) {
-                    Log.e("conexão", "salvo" + pessoa);
                     pessoaCallBack.onSuccess("Aluno salvo com sucesso");
                 } else {
-                    Log.e("conexão", "Não foi possível conectar na api" + pessoa);
                     pessoaCallBack.onError("Não foi possível salvar o aluno");
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Aluno> call, @NonNull Throwable t) {
-                Log.e("conexão", "Não foi possível conectar na api" + pessoa);
                 pessoaCallBack.onError("Serviço indisponível. Tente mais tarde.");
             }
         });
@@ -84,19 +81,14 @@ public class PessoaController {
             public void onResponse(Call<List<Aluno>> call, Response<List<Aluno>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     pessoaCallBack.onSuccess(response.body());
-//                    listaPessoas.clear();
-//                    listaPessoas.addAll(response.body());
-//                    adapter.notifyDataSetChanged();
-//                    Log.e("conexão", "lista criada" + listaPessoas.toString());
+
                 } else {
-//                    Log.e("conexão", "erro ao tentar listar");
                     pessoaCallBack.onError("erro ao tentar listar");
                 }
             }
 
             @Override
             public void onFailure(Call<List<Aluno>> call, Throwable t) {
-                Log.e("conexão", "erro ao conectar API");
             }
         });
     }

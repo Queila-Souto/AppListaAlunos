@@ -32,8 +32,6 @@ public class UsuarioController {
     private String password;
 
     public void login(String email, String password, Context context, AuthCallBack authCallBack) {
-        Log.d("AUTH", "ACESSEI METODO LOGIN");
-
         LoginRequest loginRequest = new LoginRequest(email, password);
         Auth authApi = RetrofitClient.getRetrofitInstance().create(Auth.class);
         SharedPreferences preferences = context.getSharedPreferences("APP_PREFS", MODE_PRIVATE);
@@ -43,12 +41,9 @@ public class UsuarioController {
         new Callback<LoginResponse>(){
                 @Override
                 public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
-                    Log.d("AUTH", "ACESSEI CALLBACK");
 
                     if (response.isSuccessful() && response.body() != null) {
-                        Log.d("AUTH", "RESPOSTA"+response);
                         String token = response.body().getToken();
-                        Log.d("AUTH", "Token: " + token);
                         preferences.edit()
                                 .putString("AUTH_TOKEN", token)
                                 .apply();
@@ -62,7 +57,6 @@ public class UsuarioController {
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
-                    Log.e("AUTH", "Não foi possível recuperar o token" );
           }
 
     }
@@ -76,17 +70,14 @@ public class UsuarioController {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Log.e("response", "usuário salvo" + usuario);
                     usuarioCallBack.onSuccess("Usuário salvo com sucesso");
                 } else {
-                    Log.e("response", "Não foi possível conectar na api ->" + usuario);
                     usuarioCallBack.onError("Não foi possível salvar o usuário");
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Log.e("erro", "erro" + t);
                 usuarioCallBack.onError("Serviço indisponível. Tente mais tarde.");
             }
         });
