@@ -31,7 +31,7 @@ public class UsuarioController {
     private String email;
     private String password;
 
-    public void login(String email, String password, Context context) {
+    public void login(String email, String password, Context context, AuthCallBack authCallBack) {
         Log.d("AUTH", "ACESSEI METODO LOGIN");
 
         LoginRequest loginRequest = new LoginRequest(email, password);
@@ -52,10 +52,11 @@ public class UsuarioController {
                         preferences.edit()
                                 .putString("AUTH_TOKEN", token)
                                 .apply();
+                        authCallBack.onSuccess("Login realizado com sucesso");
 
                     }
                     else {
-                        Log.d("AUTH", "EStou no else da resposta  -- "+response);
+                        authCallBack.onError("Não é possível realizar o login. Verifique as credenciais");
                     }
                 }
 
