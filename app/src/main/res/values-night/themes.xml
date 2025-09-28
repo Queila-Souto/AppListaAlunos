@@ -13,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.MeuApp.ActionBar" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Aqui você pode sobrescrever cores ou estilos só dessa tela -->
+
+    </style>
+
 </resources>

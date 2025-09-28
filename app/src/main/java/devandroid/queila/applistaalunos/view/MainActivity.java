@@ -14,13 +14,13 @@ import java.util.List;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.controller.PessoaController;
-import devandroid.queila.applistaalunos.model.Pessoa;
+import devandroid.queila.applistaalunos.model.Aluno;
 import devandroid.queila.applistaalunos.util.PessoaValidador;
 import devandroid.queila.applistaalunos.util.TelefoneMascara;
 
 public class MainActivity extends AppCompatActivity {
 
-Pessoa pessoa;
+Aluno pessoa;
 PessoaController pessoaController;
 Toolbar toolbar;
 EditText edittxtnome;
@@ -32,6 +32,7 @@ Button btnRecuperar;
 Button btnsalvar;
 Button btnlistar;
 Button btnfinalizar;
+Button btncadastrarusuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ Button btnfinalizar;
                 }
 
                 @Override
-                public void onSuccess(List<Pessoa> pessoas) {
+                public void onSuccess(List<Aluno> pessoas) {
 
                 }
 
@@ -98,7 +99,11 @@ Button btnfinalizar;
             Toast.makeText(MainActivity.this, "Dados recuperados",Toast.LENGTH_LONG).show();
         });
         btnlistar.setOnClickListener(v->{
-            Intent intent = new Intent(MainActivity.this, Login.class);
+            Intent intent = new Intent(MainActivity.this, ListagemActivity.class);
+            startActivity(intent);
+        });
+        btncadastrarusuario.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, CadastroUsuario.class);
             startActivity(intent);
         });
     }
@@ -111,7 +116,7 @@ Button btnfinalizar;
     }
 
     private void inicializarObjetos() {
-        pessoa = new Pessoa();
+        pessoa = new Aluno();
         pessoaController = new PessoaController(MainActivity.this);
         edittxtnome = findViewById(R.id.editTextText2);
         edittxtsobrenome = findViewById(R.id.editTextText3);
@@ -123,5 +128,6 @@ Button btnfinalizar;
         btnsalvar = findViewById(R.id.buttonSalvar);
         btnlistar = findViewById(R.id.buttonListar);
         btnfinalizar = findViewById(R.id.buttonFinalizar);
+        btncadastrarusuario = findViewById(R.id.buttonCadastrarUsuario);
     }
 }

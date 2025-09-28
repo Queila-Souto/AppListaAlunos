@@ -16,13 +16,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.CadastroUsuario"
             android:exported="false" />
         <activity
             android:name=".view.ListagemActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MeuApp.ActionBar"/>
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
