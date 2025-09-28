@@ -52,7 +52,9 @@
                 android:drawableStart="@drawable/email"
                 android:hint="@string/email"
                 android:background="@drawable/edittext_background"
-                android:textColorHint="@color/Login_edittext"/>
+                android:textColorHint="@color/Login_edittext"
+                android:textColor="@color/text"
+                />
 
             <EditText
                 android:id="@+id/editTextPassword"
@@ -64,11 +66,13 @@
                 android:drawablePadding="16dp"
                 android:padding="8dp"
                 android:ems="10"
-                android:inputType="textPassword"
+                android:inputType="textWebPassword|textPassword"
                 android:drawableStart="@drawable/password"
                 android:hint="@string/senha"
                 android:background="@drawable/edittext_background"
-                android:textColorHint="@color/Login_edittext"/>
+                android:textColorHint="@color/Login_edittext"
+                android:textColor="@color/text"
+                />
 
             <ImageView
                 android:id="@+id/imageView3"
