@@ -38,6 +38,10 @@ public class Login extends AppCompatActivity {
         buttonLogar.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString();
             String senha = editTextSenha.getText().toString();
+            if (email.isEmpty() || senha.isEmpty()) {
+                Toast.makeText(Login.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
             UsuarioController usuarioController = new UsuarioController();
             usuarioController.login(email, senha, this, new AuthCallBack() {
                 @Override
