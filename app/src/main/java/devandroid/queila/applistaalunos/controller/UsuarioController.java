@@ -73,6 +73,7 @@ public class UsuarioController {
                     usuarioCallBack.onSuccess("Usuário salvo com sucesso");
                 } else {
                     usuarioCallBack.onError("Não foi possível salvar o usuário");
+                    Log.e("Erro", "Resposta"+response);
                 }
             }
 

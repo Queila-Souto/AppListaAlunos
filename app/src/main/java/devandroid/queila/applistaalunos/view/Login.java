@@ -32,6 +32,8 @@ public class Login extends AppCompatActivity {
 
     private void configurarBotoes() {
         buttonNovoUsuario.setOnClickListener(v -> {
+            Intent intent = new Intent(Login.this, CadastroUsuario.class);
+            startActivity(intent);
         });
         buttonLogar.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString();
