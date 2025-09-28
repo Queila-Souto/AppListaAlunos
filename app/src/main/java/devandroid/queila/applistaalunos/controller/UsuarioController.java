@@ -27,13 +27,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UsuarioController {
-    private UsuarioApi usuarioApi = RetrofitClient.getRetrofitInstance().create(UsuarioApi.class);
     private String email;
     private String password;
 
     public void login(String email, String password, Context context, AuthCallBack authCallBack) {
         LoginRequest loginRequest = new LoginRequest(email, password);
-        Auth authApi = RetrofitClient.getRetrofitInstance().create(Auth.class);
+        Auth authApi = RetrofitClient.getRetrofitInstance(context).create(Auth.class);
         SharedPreferences preferences = context.getSharedPreferences("APP_PREFS", MODE_PRIVATE);
 
         authApi.login(loginRequest).enqueue(
@@ -62,7 +61,8 @@ public class UsuarioController {
     }
     );
     }
-    public void salvarBD(Usuario usuario, UsuarioCallBack usuarioCallBack) {
+    public void salvarBD(Usuario usuario,Context context, UsuarioCallBack usuarioCallBack) {
+        UsuarioApi usuarioApi = RetrofitClient.getRetrofitInstance(context).create(UsuarioApi.class);
 
         Call<Void> call = usuarioApi.cadastrar(usuario);
         call.enqueue(new Callback<Void>() {

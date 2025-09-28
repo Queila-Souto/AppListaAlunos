@@ -23,13 +23,15 @@ public class PessoaController {
     public static final String NOME_PREFERENCES = "pref_listaVip";
     private SharedPreferences.Editor listaVip;
     private List<Aluno> listaPessoas = new ArrayList<>();
-    private AlunoApi pessoaApi = RetrofitClient.getRetrofitInstance().create(AlunoApi.class);
     private PessoaAdapter adapter = new PessoaAdapter(listaPessoas);
+    private AlunoApi pessoaApi;
+
 
 
     public PessoaController(Context context) {
         sharedPreferences = context.getSharedPreferences(NOME_PREFERENCES, 0);
         listaVip = sharedPreferences.edit();
+        pessoaApi = RetrofitClient.getRetrofitInstance(context).create(AlunoApi.class);
     }
 
     public void salvarLocalmente(Aluno pessoa) {
@@ -84,6 +86,7 @@ public class PessoaController {
 
                 } else {
                     pessoaCallBack.onError("erro ao tentar listar");
+                    Log.e("Erro", "Erro ao listar pessoas"+response);
                 }
             }
 
