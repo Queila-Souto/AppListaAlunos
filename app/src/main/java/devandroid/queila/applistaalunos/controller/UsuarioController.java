@@ -34,7 +34,6 @@ public class UsuarioController {
         LoginRequest loginRequest = new LoginRequest(email, password);
         Auth authApi = RetrofitClient.getRetrofitInstance(context).create(Auth.class);
         SharedPreferences preferences = context.getSharedPreferences("APP_PREFS", MODE_PRIVATE);
-
         authApi.login(loginRequest).enqueue(
 
         new Callback<LoginResponse>(){
@@ -43,6 +42,7 @@ public class UsuarioController {
 
                     if (response.isSuccessful() && response.body() != null) {
                         String token = response.body().getToken();
+
                         preferences.edit()
                                 .putString("AUTH_TOKEN", token)
                                 .apply();
@@ -50,13 +50,18 @@ public class UsuarioController {
 
                     }
                     else {
+
                         authCallBack.onError("Não é possível realizar o login. Verifique as credenciais");
                     }
                 }
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
-          }
+                    Log.e("Login", "Falha ao tentar se conectar à API de login: "+ t.getMessage() );
+                    authCallBack.onError("Erro de comunicação com o servidor. Tente novamente mais tarde.");
+
+
+                }
 
     }
     );
@@ -82,5 +87,11 @@ public class UsuarioController {
                 usuarioCallBack.onError("Serviço indisponível. Tente mais tarde.");
             }
         });
+    }
+
+    public void logout(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE);
+        preferences.edit().remove("AUTH_TOKEN").apply(); // apaga o token
+        Log.d("Logout", "Usuário desconectado. Token removido.");
     }
 }

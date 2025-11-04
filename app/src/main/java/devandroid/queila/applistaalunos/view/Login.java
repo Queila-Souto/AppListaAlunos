@@ -49,6 +49,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, MainActivity.class);
                     startActivity(intent);
+
                 }
 
                 @Override

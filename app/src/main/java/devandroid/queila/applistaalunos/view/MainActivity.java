@@ -14,6 +14,7 @@ import java.util.List;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.controller.PessoaController;
+import devandroid.queila.applistaalunos.controller.UsuarioController;
 import devandroid.queila.applistaalunos.model.Aluno;
 import devandroid.queila.applistaalunos.util.PessoaValidador;
 import devandroid.queila.applistaalunos.util.TelefoneMascara;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
 Aluno pessoa;
 PessoaController pessoaController;
+
+UsuarioController usuarioController;
 Toolbar toolbar;
 EditText edittxtnome;
 EditText edittxtsobrenome;
@@ -33,6 +36,7 @@ Button btnsalvar;
 Button btnlistar;
 Button btnfinalizar;
 Button btncadastrarusuario;
+Button btnsair;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,11 @@ Button btncadastrarusuario;
 
     private void configurarBotoes() {
         btnfinalizar.setOnClickListener(v -> {
-            Toast.makeText(MainActivity.this, "Até logo!", Toast.LENGTH_LONG).show();
-            finish();
+            usuarioController.logout(MainActivity.this);
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+            Toast.makeText(MainActivity.this, "Usuário desconectado", Toast.LENGTH_SHORT).show();
+
         });
         btnsalvar.setOnClickListener(v -> {
             pessoa.setPrimeiroNome(edittxtnome.getText().toString());
@@ -106,6 +113,13 @@ Button btncadastrarusuario;
             Intent intent = new Intent(MainActivity.this, CadastroUsuario.class);
             startActivity(intent);
         });
+
+        btnsair.setOnClickListener(view -> {
+            usuarioController.logout(this);
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+            Toast.makeText(this, "Usuário desconectado", Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void limparCampos() {
@@ -118,6 +132,7 @@ Button btncadastrarusuario;
     private void inicializarObjetos() {
         pessoa = new Aluno();
         pessoaController = new PessoaController(MainActivity.this);
+        usuarioController = new UsuarioController();
         edittxtnome = findViewById(R.id.editTextText2);
         edittxtsobrenome = findViewById(R.id.editTextText3);
         edittxtcurso = findViewById(R.id.editTextText4);
@@ -129,5 +144,6 @@ Button btncadastrarusuario;
         btnlistar = findViewById(R.id.buttonListar);
         btnfinalizar = findViewById(R.id.buttonFinalizar);
         btncadastrarusuario = findViewById(R.id.buttonCadastrarUsuario);
+        btnsair = findViewById(R.id.buttonSair);
     }
 }

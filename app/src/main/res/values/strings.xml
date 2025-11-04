@@ -21,4 +21,5 @@
     <string name="confirme_sua_senha">Confirme sua Senha</string>
     <string name="voltar">Voltar</string>
     <string name="novo_usuario">Novo Usuário</string>
+    <string name="sair">Sair</string>
 </resources>
