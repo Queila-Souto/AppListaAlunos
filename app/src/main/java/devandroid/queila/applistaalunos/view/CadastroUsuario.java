@@ -1,16 +1,11 @@
 package devandroid.queila.applistaalunos.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
-
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.UsuarioCallBack;
 import devandroid.queila.applistaalunos.controller.UsuarioController;
@@ -34,9 +29,7 @@ public class CadastroUsuario extends AppCompatActivity {
         }
 
     private void configurarBotoes() {
-        buttonVoltar.setOnClickListener(v->{
-            finish();
-        });
+        buttonVoltar.setOnClickListener(v-> finish());
         buttonCadastrar.setOnClickListener(v->{
             String nome = editTextName.getText().toString();
             String email = editTextEmail.getText().toString();
@@ -75,7 +68,7 @@ public class CadastroUsuario extends AppCompatActivity {
     }
 
     private void validarCampos(String nome, String email, String senha, String confirmarSenha) {
-        if (email.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()) {
+        if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -87,7 +80,6 @@ public class CadastroUsuario extends AppCompatActivity {
 
         if (!isSenhaForte(senha)) {
             Toast.makeText(this, "A senha deve conter no mínimo 8 caracteres, com letras maiúsculas, minúsculas, número e símbolo.", Toast.LENGTH_LONG).show();
-            return;
         }
     }
 
