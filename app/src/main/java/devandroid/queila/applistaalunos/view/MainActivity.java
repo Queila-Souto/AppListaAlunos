@@ -25,18 +25,14 @@ Aluno pessoa;
 PessoaController pessoaController;
 
 UsuarioController usuarioController;
-Toolbar toolbar;
 EditText edittxtnome;
 EditText edittxtsobrenome;
 EditText edittxtcurso;
 EditText edittxttelefone;
 Button btnlimpar;
-Button btnRecuperar;
 Button btnsalvar;
 Button btnlistar;
 Button btnfinalizar;
-Button btncadastrarusuario;
-Button btnsair;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,29 +93,12 @@ Button btnsair;
             pessoaController.limparLocal();
         });
 
-        btnRecuperar.setOnClickListener(v -> {
-            pessoa = pessoaController.buscarLocalmente();
-            edittxtnome.setText(pessoa.getPrimeiroNome());
-            edittxtsobrenome.setText(pessoa.getSobrenome());
-            edittxtcurso.setText(pessoa.getCurso());
-            edittxttelefone.setText(pessoa.getTelefone());
-            Toast.makeText(MainActivity.this, "Dados recuperados",Toast.LENGTH_LONG).show();
-        });
+
         btnlistar.setOnClickListener(v->{
             Intent intent = new Intent(MainActivity.this, ListagemActivity.class);
             startActivity(intent);
         });
-        btncadastrarusuario.setOnClickListener(v->{
-            Intent intent = new Intent(MainActivity.this, CadastroUsuario.class);
-            startActivity(intent);
-        });
 
-        btnsair.setOnClickListener(view -> {
-            usuarioController.logout(this);
-            Intent intent = new Intent(MainActivity.this, Login.class);
-            startActivity(intent);
-            Toast.makeText(this, "Usuário desconectado", Toast.LENGTH_SHORT).show();
-        });
     }
 
     private void limparCampos() {
@@ -139,11 +118,8 @@ Button btnsair;
         edittxttelefone = findViewById(R.id.editTextText5);
         edittxttelefone.addTextChangedListener(TelefoneMascara.insert(edittxttelefone));
         btnlimpar = findViewById(R.id.buttonLimpar);
-        btnRecuperar = findViewById(R.id.buttonRecuperar);
         btnsalvar = findViewById(R.id.buttonSalvar);
         btnlistar = findViewById(R.id.buttonListar);
         btnfinalizar = findViewById(R.id.buttonFinalizar);
-        btncadastrarusuario = findViewById(R.id.buttonCadastrarUsuario);
-        btnsair = findViewById(R.id.buttonSair);
     }
 }

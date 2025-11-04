@@ -13,7 +13,7 @@ import devandroid.queila.applistaalunos.api.AlunoApi;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.api.RetrofitClient;
 import devandroid.queila.applistaalunos.model.Aluno;
-import devandroid.queila.applistaalunos.view.PessoaAdapter;
+import devandroid.queila.applistaalunos.view.AlunoAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +23,7 @@ public class PessoaController {
     public static final String NOME_PREFERENCES = "pref_listaVip";
     private SharedPreferences.Editor listaVip;
     private List<Aluno> listaPessoas = new ArrayList<>();
-    private PessoaAdapter adapter = new PessoaAdapter(listaPessoas);
+    private AlunoAdapter adapter = new AlunoAdapter(listaPessoas);
     private AlunoApi pessoaApi;
 
 

@@ -5,11 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.PessoaCallBack;
@@ -18,7 +16,7 @@ import devandroid.queila.applistaalunos.model.Aluno;
 
 public class ListagemActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private PessoaAdapter adapter;
+    private AlunoAdapter adapter;
     PessoaController pessoaController;
     private List<Aluno> listaAlunos = new ArrayList<>();
 
@@ -28,7 +26,7 @@ public class ListagemActivity extends AppCompatActivity {
         setContentView(R.layout.listagem);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PessoaAdapter(listaAlunos);
+        adapter = new AlunoAdapter(listaAlunos);
         recyclerView.setAdapter(adapter);
         pessoaController = new PessoaController(this);
 

@@ -8,20 +8,13 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import devandroid.queila.applistaalunos.api.AlunoApi;
 import devandroid.queila.applistaalunos.api.Auth;
-import devandroid.queila.applistaalunos.api.PessoaCallBack;
 import devandroid.queila.applistaalunos.api.RetrofitClient;
 import devandroid.queila.applistaalunos.api.UsuarioApi;
 import devandroid.queila.applistaalunos.api.UsuarioCallBack;
-import devandroid.queila.applistaalunos.model.Aluno;
 import devandroid.queila.applistaalunos.model.LoginRequest;
 import devandroid.queila.applistaalunos.model.LoginResponse;
 import devandroid.queila.applistaalunos.model.Usuario;
-import devandroid.queila.applistaalunos.view.PessoaAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

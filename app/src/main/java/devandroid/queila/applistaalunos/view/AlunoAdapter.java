@@ -13,24 +13,24 @@ import java.util.List;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.model.Aluno;
 
-public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.PessoaViewHolder> {
+public class AlunoAdapter extends RecyclerView.Adapter<AlunoAdapter.AlunoViewHolder> {
 
     private List<Aluno> lista;
 
-    public PessoaAdapter(List<Aluno> lista) {
+    public AlunoAdapter(List<Aluno> lista) {
         this.lista = lista;
     }
 
     @NonNull
     @Override
-    public PessoaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AlunoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_view, parent, false);
-        return new PessoaViewHolder(itemView);
+        return new AlunoViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PessoaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AlunoViewHolder holder, int position) {
         Aluno pessoa = lista.get(position);
         holder.textNome.setText(pessoa.getPrimeiroNome() + " " + pessoa.getSobrenome());
         holder.textTelefone.setText(pessoa.getTelefone());
@@ -42,10 +42,10 @@ public class PessoaAdapter extends RecyclerView.Adapter<PessoaAdapter.PessoaView
         return lista.size();
     }
 
-    public static class PessoaViewHolder extends RecyclerView.ViewHolder {
+    public static class AlunoViewHolder extends RecyclerView.ViewHolder {
         TextView textNome, textTelefone, textCurso;
 
-        public PessoaViewHolder(@NonNull View itemView) {
+        public AlunoViewHolder(@NonNull View itemView) {
             super(itemView);
             textNome = itemView.findViewById(R.id.txtNome);
             textTelefone = itemView.findViewById(R.id.txtTelefone);
