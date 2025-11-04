@@ -5,9 +5,8 @@
     <string name="txt_hint_sobrenome">Sobrenome</string>
     <string name="txt_hint_curso">Curso Desejado</string>
     <string name="txt_hint_tel">Telefone</string>
-    <string name="button_limpar">Limpar</string>
-    <string name="button_recuperar">Recuperar</string>
-    <string name="button_listar">Listar</string>
+    <string name="button_limpar">Limpar Campos</string>
+    <string name="button_listar">Listar Alunos</string>
     <string name="button_salvar">Salvar</string>
     <string name="button_finalizar">Finalizar</string>
     <string name="bem_vindo">Bem-Vindo</string>
