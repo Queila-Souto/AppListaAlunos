@@ -14,22 +14,45 @@
         android:padding="16dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtNome"
-            android:layout_width="wrap_content"
+        <!-- 🔹 Linha superior: nome + botão de lixeira -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nome Completo Aluno"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
+            <TextView
+                android:id="@+id/txtNome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nome Completo Aluno"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@android:color/black" />
+
+            <ImageButton
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:id="@+id/btnExcluir"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_delete_24"
+                android:contentDescription="Excluir aluno"
+                android:padding="8dp"
+                card_view:tint="@color/design_default_color_error" />
+        </LinearLayout>
+
+        <!-- 🔹 Linha do telefone -->
         <TextView
             android:id="@+id/txtTelefone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Telefone"
             android:textSize="14sp"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black" />
 
+        <!-- 🔹 Linha do curso -->
         <TextView
             android:id="@+id/txtCurso"
             android:layout_width="wrap_content"
@@ -37,6 +60,8 @@
             android:layout_marginTop="16dp"
             android:text="Curso"
             android:textStyle="bold"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:textColor="@android:color/black" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

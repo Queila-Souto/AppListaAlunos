@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import devandroid.queila.applistaalunos.R;
-import devandroid.queila.applistaalunos.api.PessoaCallBack;
-import devandroid.queila.applistaalunos.controller.PessoaController;
+import devandroid.queila.applistaalunos.api.AlunoCallBack;
+import devandroid.queila.applistaalunos.controller.AlunoController;
 import devandroid.queila.applistaalunos.model.Aluno;
 
 public class ListagemActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AlunoAdapter adapter;
-    PessoaController pessoaController;
+    AlunoController alunoController;
     private List<Aluno> listaAlunos = new ArrayList<>();
 
     @Override
@@ -26,9 +26,9 @@ public class ListagemActivity extends AppCompatActivity {
         setContentView(R.layout.listagem);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AlunoAdapter(listaAlunos);
+        adapter = new AlunoAdapter(listaAlunos, this);
         recyclerView.setAdapter(adapter);
-        pessoaController = new PessoaController(this);
+        alunoController = new AlunoController(this);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -37,7 +37,7 @@ public class ListagemActivity extends AppCompatActivity {
     }
 
     private void carregarAlunos() {
-        pessoaController.listarAlunos(new PessoaCallBack() {
+        alunoController.listarAlunos(new AlunoCallBack() {
             @Override
             public void onSuccess(String mensagem) {
             }

@@ -3,6 +3,7 @@ package devandroid.queila.applistaalunos.model;
 import androidx.annotation.NonNull;
 
 public class Aluno {
+    private Long id;
     private String primeiroNome;
     private String sobrenome;
     private String curso;
@@ -10,6 +11,9 @@ public class Aluno {
 
     public Aluno() {}
 
+    public Long getId(){
+        return id;
+    }
     public String getSobrenome() {
         return sobrenome;
     }
@@ -34,10 +38,16 @@ public class Aluno {
     public void setCurso(String curso) {
         this.curso = curso;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @NonNull
     @Override
     public String toString() {
         return "Pessoa{" +
+                "id='" + id + '\'' +
                 "primeiroNome='" + primeiroNome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
                 ", curso='" + curso + '\'' +

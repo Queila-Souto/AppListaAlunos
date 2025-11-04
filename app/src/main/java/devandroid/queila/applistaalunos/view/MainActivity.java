@@ -7,13 +7,12 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
 import devandroid.queila.applistaalunos.R;
-import devandroid.queila.applistaalunos.api.PessoaCallBack;
-import devandroid.queila.applistaalunos.controller.PessoaController;
+import devandroid.queila.applistaalunos.api.AlunoCallBack;
+import devandroid.queila.applistaalunos.controller.AlunoController;
 import devandroid.queila.applistaalunos.controller.UsuarioController;
 import devandroid.queila.applistaalunos.model.Aluno;
 import devandroid.queila.applistaalunos.util.PessoaValidador;
@@ -22,7 +21,7 @@ import devandroid.queila.applistaalunos.util.TelefoneMascara;
 public class MainActivity extends AppCompatActivity {
 
 Aluno pessoa;
-PessoaController pessoaController;
+AlunoController alunoController;
 
 UsuarioController usuarioController;
 EditText edittxtnome;
@@ -67,8 +66,8 @@ Button btnfinalizar;
             }
 
             pessoa.setTelefone(TelefoneMascara.limpar(pessoa.getTelefone()));
-            pessoaController.salvarLocalmente(pessoa);
-            pessoaController.salvarBD(pessoa, new PessoaCallBack() {
+            alunoController.salvarLocalmente(pessoa);
+            alunoController.salvarBD(pessoa, new AlunoCallBack() {
 
                 @Override
                 public void onSuccess(String mensagem) {
@@ -90,7 +89,7 @@ Button btnfinalizar;
 
         btnlimpar.setOnClickListener(v -> {
             limparCampos();
-            pessoaController.limparLocal();
+            alunoController.limparLocal();
         });
 
 
@@ -110,7 +109,7 @@ Button btnfinalizar;
 
     private void inicializarObjetos() {
         pessoa = new Aluno();
-        pessoaController = new PessoaController(MainActivity.this);
+        alunoController = new AlunoController(MainActivity.this);
         usuarioController = new UsuarioController();
         edittxtnome = findViewById(R.id.editTextText2);
         edittxtsobrenome = findViewById(R.id.editTextText3);
