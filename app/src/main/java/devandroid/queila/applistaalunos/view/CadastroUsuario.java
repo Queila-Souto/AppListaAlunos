@@ -1,5 +1,6 @@
 package devandroid.queila.applistaalunos.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +50,8 @@ public class CadastroUsuario extends AppCompatActivity {
                 public void onSuccess(String mensagem) {
                     Toast.makeText(CadastroUsuario.this, mensagem, Toast.LENGTH_LONG).show();
                     limparCampos();
+                    finish();
+
                 }
 
                 @Override

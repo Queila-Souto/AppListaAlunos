@@ -7,7 +7,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface UsuarioApi {
-    @POST("/usuario/create")
+    @POST("/usuario/cadastro")
     @Headers("Content-Type: application/json")
     Call<Void> cadastrar(@Body Usuario usuario);
 
