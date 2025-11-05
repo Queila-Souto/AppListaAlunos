@@ -1,0 +1,27 @@
+<!-- Em res/drawable/circular_button_background.xml -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/Login_primary"> <!-- Cor padrão do sistema para o efeito de clique -->
+
+    <!-- Máscara: Define a forma onde o efeito de ondulação será visível.
+         Neste caso, um círculo (oval). É a parte mais importante. -->
+    <item android:id="@android:id/mask">
+        <shape android:shape="oval">
+            <!-- A cor aqui dentro é apenas para a máscara, pode ser qualquer uma. -->
+            <solid android:color="@android:color/black" />
+        </shape>
+    </item>
+
+    <!-- (Opcional) Fundo estático do botão.
+         Se você quer que seu botão tenha uma cor de fundo sólida, defina aqui.
+         Se quer que seja transparente, pode remover este <item> ou usar android:color/transparent. -->
+    <item>
+        <shape android:shape="oval">
+            <!-- Exemplo: Se quisesse um fundo branco sólido para o botão -->
+            <!-- <solid android:color="@android:color/white" /> -->
+
+            <!-- Para um fundo totalmente transparente, que é o que você provavelmente quer -->
+            <solid android:color="@android:color/transparent" />
+        </shape>
+    </item>
+
+</ripple>
