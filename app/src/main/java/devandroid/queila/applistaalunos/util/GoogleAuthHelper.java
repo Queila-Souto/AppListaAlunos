@@ -11,6 +11,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class GoogleAuthHelper {
 
@@ -52,7 +53,7 @@ public class GoogleAuthHelper {
             GoogleSignInAccount account = task.getResult(ApiException.class);
 
             if (account != null && account.getIdToken() != null) {
-                onLoginListener.onSuccess(account.getIdToken());
+                onLoginListener.onSuccess(account.getIdToken(), account.getDisplayName(), account.getEmail());
                 Log.d("GOOGLE_LOGIN", "Login com Google bem-sucedido. Token obtido.");
             } else {
                 onLoginListener.onError(new Exception("Falha ao obter o ID Token da conta Google."));
@@ -66,7 +67,7 @@ public class GoogleAuthHelper {
     }
 
     public interface OnGoogleLoginListener {
-        void onSuccess(@NonNull String idToken);
+        void onSuccess(@NonNull String idToken, @Nullable String displayName, @Nullable String email);
         void onError(@NonNull Exception e);
     }
 }

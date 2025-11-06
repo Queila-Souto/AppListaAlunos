@@ -3,9 +3,11 @@ package devandroid.queila.applistaalunos.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -33,6 +35,8 @@ Button btnlimpar;
 Button btnsalvar;
 Button btnlistar;
 Button btnfinalizar;
+TextView textViewNome;
+TextView textViewEmail;
 private GoogleAuthHelper googleAuthHelper;
 
     @Override
@@ -40,7 +44,18 @@ private GoogleAuthHelper googleAuthHelper;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inicializarObjetos();
+        recuperarUsuario();
         configurarBotoes();
+    }
+
+    private void recuperarUsuario() {
+        SharedPreferences preferences = getSharedPreferences("APP_PREFS", MODE_PRIVATE);
+
+        String nome = preferences.getString("USER_NAME", "Usuário");
+        String email = preferences.getString("USER_EMAIL", "Email não encontrado");
+
+        textViewEmail.setText(email);
+        textViewNome.setText(nome);
     }
 
     private void configurarBotoes() {
@@ -111,6 +126,8 @@ private GoogleAuthHelper googleAuthHelper;
     }
 
     private void inicializarObjetos() {
+        textViewEmail = findViewById(R.id.textViewEmail);
+        textViewNome = findViewById(R.id.textViewName);
         pessoa = new Aluno();
         String serverClientId = getString(R.string.googleClientId);
         googleAuthHelper = new GoogleAuthHelper(this, serverClientId);
