@@ -87,4 +87,5 @@ public class UsuarioController {
         preferences.edit().remove("AUTH_TOKEN").apply(); // apaga o token
         Log.d("Logout", "Usuário desconectado. Token removido.");
     }
+
 }
