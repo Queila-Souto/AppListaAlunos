@@ -8,6 +8,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import androidx.annotation.NonNull;
 
@@ -34,6 +35,10 @@ public class GoogleAuthHelper {
     public void signIn() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
         activity.startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    public void signOut(OnCompleteListener<Void> listener) {
+        googleSignInClient.signOut().addOnCompleteListener(activity, listener);
     }
 
     public void handleResult(int requestCode, Intent data) {

@@ -15,6 +15,7 @@ import devandroid.queila.applistaalunos.api.AlunoCallBack;
 import devandroid.queila.applistaalunos.controller.AlunoController;
 import devandroid.queila.applistaalunos.controller.UsuarioController;
 import devandroid.queila.applistaalunos.model.Aluno;
+import devandroid.queila.applistaalunos.util.GoogleAuthHelper;
 import devandroid.queila.applistaalunos.util.PessoaValidador;
 import devandroid.queila.applistaalunos.util.TelefoneMascara;
 
@@ -32,6 +33,7 @@ Button btnlimpar;
 Button btnsalvar;
 Button btnlistar;
 Button btnfinalizar;
+private GoogleAuthHelper googleAuthHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +45,9 @@ Button btnfinalizar;
 
     private void configurarBotoes() {
         btnfinalizar.setOnClickListener(v -> {
-            usuarioController.logout(MainActivity.this);
+            usuarioController.logout(MainActivity.this, googleAuthHelper);
             Intent intent = new Intent(MainActivity.this, Login.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             Toast.makeText(MainActivity.this, "Usuário desconectado", Toast.LENGTH_SHORT).show();
 
@@ -109,6 +112,8 @@ Button btnfinalizar;
 
     private void inicializarObjetos() {
         pessoa = new Aluno();
+        String serverClientId = getString(R.string.googleClientId);
+        googleAuthHelper = new GoogleAuthHelper(this, serverClientId);
         alunoController = new AlunoController(MainActivity.this);
         usuarioController = new UsuarioController();
         edittxtnome = findViewById(R.id.editTextText2);

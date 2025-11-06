@@ -1,6 +1,7 @@
 package devandroid.queila.applistaalunos.controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import devandroid.queila.applistaalunos.model.LoginRequest;
 import devandroid.queila.applistaalunos.model.LoginResponse;
 import devandroid.queila.applistaalunos.model.Usuario;
 import devandroid.queila.applistaalunos.util.GoogleAuthHelper;
+import devandroid.queila.applistaalunos.view.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -110,10 +112,14 @@ public class UsuarioController {
         });
     }
 
-    public void logout(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE);
-        preferences.edit().remove("AUTH_TOKEN").apply();
-        Log.d("Logout", "Usuário desconectado. Token removido.");
+    public void logout(Context context, GoogleAuthHelper googleHelper) {
+        // Passo A: Iniciar o logout do Google.
+        googleHelper.signOut(task -> {
+            SharedPreferences preferences = context.getSharedPreferences("APP_PREFS", Context.MODE_PRIVATE);
+            preferences.edit().remove("AUTH_TOKEN").apply();
+            Log.d("Logout", "Usuário desconectado. Token local removido e sessão do Google encerrada.");
+
+        });
     }
 }
 
