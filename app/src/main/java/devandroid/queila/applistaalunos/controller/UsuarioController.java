@@ -15,7 +15,7 @@ import devandroid.queila.applistaalunos.model.LoginRequest;
 import devandroid.queila.applistaalunos.model.LoginResponse;
 import devandroid.queila.applistaalunos.model.Usuario;
 import devandroid.queila.applistaalunos.util.GoogleAuthHelper;
-import devandroid.queila.applistaalunos.view.Login; // Adicionado para o redirecionamento no logout
+import devandroid.queila.applistaalunos.view.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,30 +28,26 @@ public class UsuarioController {
         apiService.login(loginRequest).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
+                Log.d("AuthBasic", response.raw().toString());
+                Log.d("AuthBasic", String.valueOf(response.errorBody()));
                 if (response.isSuccessful() && response.body() != null) {
                     LoginResponse loginResponse = response.body();
                     String token = loginResponse.getToken();
 
-                    // --- CORREÇÃO: Lógica defensiva para evitar NullPointerException ---
-                    String nome = "Usuário"; // Valor padrão
-                    String emailUsuario = email;  // Use o email do login como fallback
+                    // --- CORREÇÃO: Acesse 'nome' e 'email' diretamente do loginResponse ---
+                    String nome = loginResponse.getNome();
+                    String emailUsuario = loginResponse.getEmail();
 
-                    // Verifique se o objeto 'usuario' e seus atributos não são nulos antes de usá-los
-                    if (loginResponse.getUsuario() != null) {
-                        if (loginResponse.getUsuario().getNome() != null) {
-                            nome = loginResponse.getUsuario().getNome();
-                        }
-                        if (loginResponse.getUsuario().getEmail() != null) {
-                            emailUsuario = loginResponse.getUsuario().getEmail();
-                        }
-                    }
+                    // Use valores padrão como fallback, por segurança
+                    if (nome == null) nome = "Usuário";
+                    if (emailUsuario == null) emailUsuario = email; // 'email' vindo do parâmetro do método
 
                     salvarSessaoUsuario(context, token, nome, emailUsuario);
                     authCallBack.onSuccess("Login realizado com sucesso");
                 } else {
                     authCallBack.onError("Não é possível realizar o login. Verifique as credenciais");
                 }
-            }
+            } // <--- CHAVE DE FECHAMENTO QUE ESTAVA FALTANDO
 
             @Override
             public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
@@ -94,15 +90,12 @@ public class UsuarioController {
                     String nomeFinal = (googleDisplayName != null) ? googleDisplayName : "Usuário";
                     String emailFinal = googleEmail;
 
-                    // Se a sua API retornar dados do usuário, eles podem estar mais atualizados (ex: nome editado no seu sistema).
-                    // Então, damos preferência a eles, se existirem.
-                    if (response.body().getUsuario() != null) {
-                        if (response.body().getUsuario().getNome() != null) {
-                            nomeFinal = response.body().getUsuario().getNome();
-                        }
-                        if (response.body().getUsuario().getEmail() != null) {
-                            emailFinal = response.body().getUsuario().getEmail();
-                        }
+                    // Se a sua API retornar dados do usuário, damos preferência a eles, se existirem.
+                    if (response.body().getNome() != null) {
+                        nomeFinal = response.body().getNome();
+                    }
+                    if (response.body().getEmail() != null) {
+                        emailFinal = response.body().getEmail();
                     }
 
                     salvarSessaoUsuario(context, jwt, nomeFinal, emailFinal);

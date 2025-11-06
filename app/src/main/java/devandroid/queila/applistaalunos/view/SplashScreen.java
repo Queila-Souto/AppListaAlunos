@@ -1,58 +1,48 @@
+// No pacote devandroid.queila.applistaalunos.view
 package devandroid.queila.applistaalunos.view;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageView;
-
+import android.os.Looper;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.jetbrains.annotations.Nullable;
+// Importe o TokenManager
+import devandroid.queila.applistaalunos.util.TokenManager;
 
-import devandroid.queila.applistaalunos.R;
-
-public class SplashScreen extends AppCompatActivity {
-
-    // Duração da tela splash (em milissegundos)
-    private static final int SPLASH_DURATION = 3000; // 3 segundos
+public class SplashScreen extends AppCompatActivity { // Ou o nome que você deu
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_screen); // seu layout contendo o ImageView
+        // setContentView(R.layout.activity_splash);
 
-        ImageView imageView = findViewById(R.id.splash_anim);
-        Drawable drawable = imageView.getDrawable();
+        // Usar um Handler para dar um tempo para a splash screen aparecer
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            // Verifica se o token existe
+            String token = TokenManager.getToken(this);
 
-        // Inicia a animação AVD
-        if (drawable instanceof AnimatedVectorDrawable) {
-            AnimatedVectorDrawable avd = (AnimatedVectorDrawable) drawable;
-            avd.start();
-        }
-
-        // Transição automática para a próxima Activity após o tempo definido
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(intent);
-                finish(); // Fecha a splash para não voltar a ela
+            if (token != null && !token.isEmpty()) {
+                // Token existe: usuário está logado. Vá para a MainActivity.
+                irParaTelaPrincipal();
+            } else {
+                // Token NÃO existe: usuário não está logado. Vá para a tela de Login.
+                irParaTelaDeLogin();
             }
-        }, SPLASH_DURATION);
+        }, 1500); // Delay de 1.5 segundos (ajuste se necessário)
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        // Garante que a animação reinicie se a splash for exibida novamente
-        ImageView imageView = findViewById(R.id.splash_anim);
-        Drawable drawable = imageView.getDrawable();
+    private void irParaTelaPrincipal() {
+        Intent intent = new Intent(this, MainActivity.class);
+        // Essas flags limpam a pilha de navegação, impedindo o usuário de voltar para a Splash
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 
-        if (drawable instanceof AnimatedVectorDrawable) {
-            AnimatedVectorDrawable avd = (AnimatedVectorDrawable) drawable;
-            avd.start();
-        }
+    private void irParaTelaDeLogin() {
+        Intent intent = new Intent(this, Login.class);
+        // O mesmo aqui: limpa a pilha para não voltar à Splash
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

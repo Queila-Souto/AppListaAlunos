@@ -2,7 +2,8 @@ package devandroid.queila.applistaalunos.model;
 
 public class LoginResponse {
     private String token;
-    private Usuario usuario; // Adicione este campo
+    private String nome;
+    private String email;
 
     // Getters e Setters
     public String getToken() {
@@ -12,10 +13,19 @@ public class LoginResponse {
         this.token = token;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getNome() {
+        return nome;
     }
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
