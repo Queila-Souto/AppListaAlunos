@@ -38,7 +38,7 @@ public class CadastroUsuario extends AppCompatActivity {
             validarCampos(nome, email, senha, confirmarSenha);
             Usuario usuario = new Usuario(nome, email, senha);
             UsuarioController usuarioController = new UsuarioController();
-            usuarioController.salvarBD(usuario, this, new UsuarioCallBack() {
+            usuarioController.cadastrarUsuario(usuario, this, new UsuarioCallBack() {
                 @Override
                 public void onSuccess(String mensagem) {
                     Toast.makeText(CadastroUsuario.this, mensagem, Toast.LENGTH_LONG).show();
