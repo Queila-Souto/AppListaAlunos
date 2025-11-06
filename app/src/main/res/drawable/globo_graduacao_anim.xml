@@ -1,0 +1,8 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/globo_graduacao_vector">
+
+    <target
+        android:name="globo_group"
+        android:animation="@animator/globo_rotate" />
+
+</animated-vector>

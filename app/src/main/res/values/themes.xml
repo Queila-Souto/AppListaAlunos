@@ -1,5 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+    <style name="Theme.SplashScreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Fundo da splash (branco, preto ou outra cor da sua marca) -->
+        <item name="android:windowBackground">@color/white</item>
+
+        <!-- Remove ActionBar e título -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+
+        <!-- Evita o ícone do Android antes do layout carregar -->
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
     <style name="Theme.AppListaAlunos" parent="Theme.AppCompat.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#63A5EF</item>

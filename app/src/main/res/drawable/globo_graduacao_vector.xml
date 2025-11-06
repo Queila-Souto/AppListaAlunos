@@ -1,0 +1,63 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Fundo transparente -->
+    <group
+        android:name="globo_group"
+        android:pivotX="100"
+        android:pivotY="100">
+
+        <!-- Círculo do globo -->
+        <path
+            android:name="globo"
+            android:fillColor="#6200EE"
+            android:pathData="M100,10a90,90 0 1,0 0.0001,0Z"/>
+
+        <!-- Linhas horizontais do globo -->
+        <path
+            android:strokeColor="#03DAC5"
+            android:strokeWidth="2"
+            android:fillColor="@android:color/transparent"
+            android:pathData="M20,100a80,80 0 1,0 160,0a80,80 0 1,0 -160,0Z"/>
+
+        <path
+            android:strokeColor="#03DAC5"
+            android:strokeWidth="2"
+            android:fillColor="@android:color/transparent"
+            android:pathData="M40,60a60,60 0 1,0 120,0a60,60 0 1,0 -120,0Z"/>
+
+        <path
+            android:strokeColor="#03DAC5"
+            android:strokeWidth="2"
+            android:fillColor="@android:color/transparent"
+            android:pathData="M40,140a60,60 0 1,0 120,0a60,60 0 1,0 -120,0Z"/>
+
+    </group>
+
+    <!-- Chapéu de formatura -->
+    <group
+        android:name="chapeu_group"
+        android:pivotX="100"
+        android:pivotY="50">
+
+        <!-- Base do chapéu -->
+        <path
+            android:fillColor="#018786"
+            android:pathData="M60,45l40,-15l40,15l-40,15z" />
+
+        <!-- Ponta do chapéu -->
+        <path
+            android:fillColor="#018786"
+            android:pathData="M100,60l3,10l-6,0z" />
+
+        <!-- Cordão -->
+        <path
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="2"
+            android:pathData="M100,60l0,15" />
+    </group>
+</vector>
+
