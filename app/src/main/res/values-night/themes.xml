@@ -2,7 +2,6 @@
     <!-- Base application theme. -->
     <style name="Theme.AppListaAlunos" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
@@ -17,5 +16,9 @@
         <!-- Aqui você pode sobrescrever cores ou estilos só dessa tela -->
 
     </style>
+    <style name="Theme.App.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    </style>
+
+
 
 </resources>
