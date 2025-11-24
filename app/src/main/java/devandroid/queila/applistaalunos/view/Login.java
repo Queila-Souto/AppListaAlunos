@@ -14,6 +14,7 @@ import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.controller.AuthCallBack;
 import devandroid.queila.applistaalunos.controller.UsuarioController;
 import devandroid.queila.applistaalunos.util.GoogleAuthHelper;
+import devandroid.queila.applistaalunos.util.LoadingManager;
 
 public class Login extends AppCompatActivity {
     EditText editTextEmail;
@@ -56,6 +57,7 @@ public class Login extends AppCompatActivity {
 
         // --- Botão de Login com Email e Senha ---
         buttonLogar.setOnClickListener(v -> {
+            LoadingManager.show(Login.this);
             String email = editTextEmail.getText().toString().trim();
             String senha = editTextSenha.getText().toString().trim();
             if (email.isEmpty() || senha.isEmpty()) {
@@ -65,11 +67,13 @@ public class Login extends AppCompatActivity {
             usuarioController.login(this, email, senha, new AuthCallBack() {
                 @Override
                 public void onSuccess(String message) {
+                    LoadingManager.hide();
                     Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
                     navegarParaTelaPrincipal();
                 }
                 @Override
                 public void onError(String message) {
+                    LoadingManager.hide();
                     Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
                 }
             });

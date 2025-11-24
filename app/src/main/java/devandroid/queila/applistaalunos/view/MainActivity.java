@@ -18,6 +18,7 @@ import devandroid.queila.applistaalunos.controller.AlunoController;
 import devandroid.queila.applistaalunos.controller.UsuarioController;
 import devandroid.queila.applistaalunos.model.Aluno;
 import devandroid.queila.applistaalunos.util.GoogleAuthHelper;
+import devandroid.queila.applistaalunos.util.LoadingManager;
 import devandroid.queila.applistaalunos.util.PessoaValidador;
 import devandroid.queila.applistaalunos.util.TelefoneMascara;
 
@@ -60,14 +61,17 @@ private GoogleAuthHelper googleAuthHelper;
 
     private void configurarBotoes() {
         btnfinalizar.setOnClickListener(v -> {
+            LoadingManager.show(MainActivity.this);
             usuarioController.logout(MainActivity.this, googleAuthHelper);
             Intent intent = new Intent(MainActivity.this, Login.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            LoadingManager.hide();
             startActivity(intent);
             Toast.makeText(MainActivity.this, "Usuário desconectado", Toast.LENGTH_SHORT).show();
 
         });
         btnsalvar.setOnClickListener(v -> {
+            LoadingManager.show(MainActivity.this);
             pessoa.setPrimeiroNome(edittxtnome.getText().toString());
             pessoa.setSobrenome(edittxtsobrenome.getText().toString());
             pessoa.setCurso(edittxtcurso.getText().toString());
@@ -89,17 +93,20 @@ private GoogleAuthHelper googleAuthHelper;
 
                 @Override
                 public void onSuccess(String mensagem) {
+                    LoadingManager.hide();
                     Toast.makeText(MainActivity.this, mensagem, Toast.LENGTH_LONG).show();
                     limparCampos();
                 }
 
                 @Override
                 public void onSuccess(List<Aluno> pessoas) {
+                    LoadingManager.hide();
 
                 }
 
                 @Override
                 public void onError(String mensagem) {
+                    LoadingManager.hide();
                     Toast.makeText(MainActivity.this, mensagem, Toast.LENGTH_LONG).show();
                 }
             });
@@ -112,6 +119,7 @@ private GoogleAuthHelper googleAuthHelper;
 
 
         btnlistar.setOnClickListener(v->{
+            LoadingManager.show(MainActivity.this);
             Intent intent = new Intent(MainActivity.this, ListagemActivity.class);
             startActivity(intent);
         });
