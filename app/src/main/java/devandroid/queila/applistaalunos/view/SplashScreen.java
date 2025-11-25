@@ -2,12 +2,18 @@
 package devandroid.queila.applistaalunos.view;
 
 import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 // Importe o TokenManager
+import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.util.TokenManager;
 
 public class SplashScreen extends AppCompatActivity { // Ou o nome que você deu
@@ -15,8 +21,17 @@ public class SplashScreen extends AppCompatActivity { // Ou o nome que você deu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_splash);
+        setContentView(R.layout.splash_screen);
+        ImageView imageView = findViewById(R.id.splash_anim);
 
+        imageView.post(() -> {
+            Drawable drawable = imageView.getDrawable();
+
+            if (drawable instanceof Animatable) {
+                ((Animatable) drawable).start();
+            }
+        });
+        Log.d("Launch", "Estou na splash");
         // Usar um Handler para dar um tempo para a splash screen aparecer
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             // Verifica se o token existe
@@ -29,7 +44,7 @@ public class SplashScreen extends AppCompatActivity { // Ou o nome que você deu
                 // Token NÃO existe: usuário não está logado. Vá para a tela de Login.
                 irParaTelaDeLogin();
             }
-        }, 1500); // Delay de 1.5 segundos (ajuste se necessário)
+        }, 2000); // Delay de 1.5 segundos (ajuste se necessário)
     }
 
     private void irParaTelaPrincipal() {

@@ -19,7 +19,7 @@
         <activity
             android:name=".view.SplashScreen"
             android:exported="true"
-            android:theme="@style/Theme.SplashScreen">
+            android:theme="@style/Theme.AppListaAlunos">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
         <activity
             android:name=".view.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="true">
+            android:exported="false">
             
         </activity>
     </application>
