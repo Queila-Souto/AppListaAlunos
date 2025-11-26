@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/backgroud_app"
             android:orientation="vertical"
             tools:ignore="ExtraText">
@@ -27,7 +27,8 @@
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/top_background1" />
+                app:srcCompat="@drawable/top_background1"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -47,12 +48,13 @@
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="32dp"
+                android:autofillHints="emailAddress"
                 android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/email"
                 android:drawablePadding="16dp"
                 android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textPersonName"
+                android:hint="@string/informe_seu_email"
+                android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:textColor="@color/text"
                 android:textColorHint="@color/Login_edittext" />
@@ -64,11 +66,12 @@
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="32dp"
+                android:autofillHints="password"
                 android:background="@drawable/edittext_background"
                 android:drawableStart="@drawable/password"
                 android:drawablePadding="16dp"
                 android:ems="10"
-                android:hint="@string/senha"
+                android:hint="@string/informe_senha"
                 android:inputType="textWebPassword|textPassword"
                 android:padding="8dp"
                 android:textColor="@color/text"
@@ -85,7 +88,8 @@
                 android:padding="3dp"
                 android:scaleType="centerInside"
                 android:tooltipText="@string/entrar"
-                android:background="@drawable/circular_button_background" />
+                android:background="@drawable/circular_button_background"
+                tools:ignore="ContentDescription" />
 
 
             <LinearLayout
@@ -96,30 +100,16 @@
                 android:padding="16dp">
 
                 <Button
-                    android:id="@+id/button"
-                    style="@android:style/Widget.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_background"
-                    android:drawableEnd="@drawable/facebook"
-                    android:padding="8dp"
-                    android:text="Facebook"
-                    android:textColor="@color/text"
-                    android:textStyle="bold" />
-
-                <Button
                     android:id="@+id/button2"
                     style="@android:style/Widget.Button"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="55dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
                     android:background="@drawable/button_background"
                     android:drawableEnd="@drawable/google"
                     android:padding="8dp"
-                    android:text="Google"
+                    android:text="@string/acesse_com_sua_conta_google"
                     android:textColor="@color/text"
                     android:textStyle="bold" />
 
@@ -129,10 +119,10 @@
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_margin="16dp"
                 android:layout_weight="1"
-                android:text="Novo usuário? Clique aqui"
+                android:text="@string/novo_usu_rio_clique_aqui"
                 android:textAlignment="center"
                 android:textColor="@color/text"
                 android:textStyle="bold" />
