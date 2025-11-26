@@ -6,13 +6,16 @@
     android:layout_height="wrap_content"
     card_view:cardCornerRadius="8dp"
     card_view:cardElevation="4dp"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:backgroundTint="@color/backgroud_app"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#34FFEEF2">
 
         <!-- 🔹 Linha superior: nome + botão de lixeira -->
         <LinearLayout
@@ -29,7 +32,7 @@
                 android:text="Nome Completo Aluno"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@android:color/black" />
+                android:textColor="@color/text_primary" />
 
             <ImageButton
                 android:background="?attr/selectableItemBackgroundBorderless"
@@ -39,7 +42,9 @@
                 android:src="@drawable/baseline_delete_24"
                 android:contentDescription="Excluir aluno"
                 android:padding="8dp"
-                card_view:tint="@color/design_default_color_error" />
+                card_view:tint="#E53935" />
+
+
         </LinearLayout>
 
         <!-- 🔹 Linha do telefone -->
@@ -50,7 +55,7 @@
             android:text="Telefone"
             android:textSize="14sp"
             android:layout_marginTop="8dp"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/text_secundary" />
 
         <!-- 🔹 Linha do curso -->
         <TextView
@@ -61,7 +66,7 @@
             android:text="Curso"
             android:textStyle="bold"
             android:textSize="14sp"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/text_secundary" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

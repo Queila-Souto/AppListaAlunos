@@ -36,8 +36,9 @@
             android:exported="false" />
         <activity
             android:name=".view.ListagemActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="false"
-            android:theme="@style/Theme.MeuApp.ActionBar"/>
+           />
         <activity
             android:name=".view.Login"
             android:theme="@style/Theme.AppCompat.NoActionBar"

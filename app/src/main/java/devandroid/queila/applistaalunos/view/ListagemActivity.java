@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ public class ListagemActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listagem);
+        Button buttonVoltar;
+        buttonVoltar = findViewById(R.id.btnVoltar);
+        buttonVoltar.setOnClickListener(v -> finish());
         LoadingManager.show(this);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

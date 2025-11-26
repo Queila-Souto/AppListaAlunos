@@ -15,7 +15,10 @@
     <color name="backgroud_app">#ffeef2</color>
     <color name="Login_primary">#EA6D35</color>
     <color name="Login_edittext">#756c6c</color>
+    <color name="acoes_destrutivas">#B71C1C</color>
     <color name="text">#395e91</color>
+    <color name="text_primary">#444444</color>
+    <color name="text_secundary">#99000000</color>
 
 
 </resources>
