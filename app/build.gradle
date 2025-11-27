@@ -2,6 +2,14 @@ plugins {
     id 'com.android.application'
 }
 
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localProperties.load(new FileInputStream(localPropertiesFile))
+}
+def apiBaseUrl = localProperties.getProperty('API_BASE_URL', '')
+def googleClientId = localProperties.getProperty('GOOGLE_CLIENT_ID', '')
+
 android {
     compileSdk 35
 
@@ -16,9 +24,15 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "API_BASE_URL", "\"$apiBaseUrl\""
+            buildConfigField "String", "GOOGLE_CLIENT_ID", "\"$googleClientId\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_BASE_URL", "\"$apiBaseUrl\""
+            buildConfigField "String", "GOOGLE_CLIENT_ID", "\"$googleClientId\""
         }
     }
     compileOptions {

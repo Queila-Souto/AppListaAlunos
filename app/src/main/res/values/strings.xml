@@ -21,7 +21,6 @@
     <string name="novo_usuario">Novo Usuário</string>
     <string name="sair">Sair</string>
     <string name="entrar">Entrar</string>
-    <string name="googleClientId">10222241811-7cbs3gmi7g782nmdlb3ust46lgou8mod.apps.googleusercontent.com</string>
     <string name="acesse_com_sua_conta_google">Acesse com sua conta Google</string>
     <string name="novo_usu_rio_clique_aqui">Novo usuário? Clique aqui</string>
 </resources>

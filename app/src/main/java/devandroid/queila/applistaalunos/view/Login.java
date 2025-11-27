@@ -10,6 +10,8 @@ import android.widget.Toast;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import devandroid.queila.applistaalunos.BuildConfig;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.controller.AuthCallBack;
 import devandroid.queila.applistaalunos.controller.UsuarioController;
@@ -44,8 +46,7 @@ public class Login extends AppCompatActivity {
 
     private void inicializarControllers() {
         usuarioController = new UsuarioController();
-        String serverClientId = getString(R.string.googleClientId);
-        googleAuthHelper = new GoogleAuthHelper(this, serverClientId);
+        googleAuthHelper = new GoogleAuthHelper(this, BuildConfig.GOOGLE_CLIENT_ID);
     }
 
     private void configurarBotoes() {

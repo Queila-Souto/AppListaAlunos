@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import devandroid.queila.applistaalunos.BuildConfig;
 import devandroid.queila.applistaalunos.R;
 import devandroid.queila.applistaalunos.api.AlunoCallBack;
 import devandroid.queila.applistaalunos.controller.AlunoController;
@@ -137,7 +138,7 @@ private GoogleAuthHelper googleAuthHelper;
         textViewEmail = findViewById(R.id.textViewEmail);
         textViewNome = findViewById(R.id.textViewName);
         pessoa = new Aluno();
-        String serverClientId = getString(R.string.googleClientId);
+        String serverClientId = BuildConfig.GOOGLE_CLIENT_ID;
         googleAuthHelper = new GoogleAuthHelper(this, serverClientId);
         alunoController = new AlunoController(MainActivity.this);
         usuarioController = new UsuarioController();
