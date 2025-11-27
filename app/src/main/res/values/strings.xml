@@ -23,4 +23,8 @@
     <string name="entrar">Entrar</string>
     <string name="acesse_com_sua_conta_google">Acesse com sua conta Google</string>
     <string name="novo_usu_rio_clique_aqui">Novo usuário? Clique aqui</string>
+    <string name="t_tulo">Título</string>
+    <string name="mensagem">MensagemMensagemMensagemMensagemMensagemMensagemMensagem MensagemMensagem</string>
+    <string name="nao">Não</string>
+    <string name="sim">Sim</string>
 </resources>

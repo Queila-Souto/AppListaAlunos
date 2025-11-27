@@ -1,7 +1,6 @@
 package devandroid.queila.applistaalunos.view;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -84,28 +83,25 @@ private GoogleAuthHelper googleAuthHelper;
     }
 
     private void configurarBotoes() {
-        btnfinalizar.setOnClickListener(v -> {
-            new CustomConfirmDialog(
-                    "Logout",
-                    "Ao prosseguir você estará se deslogando da aplicação. Deseja prosseguir?",
-                    new CustomConfirmDialog.OnConfirmListener() {
-                        @Override
-                        public void onConfirm() {
-                            LoadingManager.show(MainActivity.this);
-                            usuarioController.logout(MainActivity.this, googleAuthHelper);
-                            Intent intent = new Intent(MainActivity.this, Login.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            LoadingManager.hide();
-                            startActivity(intent);
-                            Toast.makeText(MainActivity.this, "Usuário desconectado", Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onCancel() { }
+        btnfinalizar.setOnClickListener(v -> new CustomConfirmDialog(
+                "Logout",
+                "Ao prosseguir você estará se deslogando da aplicação. Deseja prosseguir?",
+                new CustomConfirmDialog.OnConfirmListener() {
+                    @Override
+                    public void onConfirm() {
+                        LoadingManager.show(MainActivity.this);
+                        usuarioController.logout(MainActivity.this, googleAuthHelper);
+                        Intent intent = new Intent(MainActivity.this, Login.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        LoadingManager.hide();
+                        startActivity(intent);
+                        Toast.makeText(MainActivity.this, "Usuário desconectado", Toast.LENGTH_SHORT).show();
                     }
-            ).show(getSupportFragmentManager(), "dialog_sair");
 
-        });
+                    @Override
+                    public void onCancel() { }
+                }
+        ).show(getSupportFragmentManager(), "dialog_sair"));
         btnsalvar.setOnClickListener(v -> {
             LoadingManager.show(MainActivity.this);
             pessoa.setPrimeiroNome(edittxtnome.getText().toString());
